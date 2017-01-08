@@ -1,17 +1,10 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
+    "name": "taobig/yii2-app-basic-improve",
+    "description": "A project Based on Yii 2 Basic Project Template",
     "keywords": ["yii2", "framework", "basic", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "homepage": "https://github.com/taobig/yii2-app-basic-improve",
     "type": "project",
-    "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
-    },
+    "license": "MIT",
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.0.0",
@@ -39,9 +32,9 @@
                     "yii": "0755"
                 }
             ],
-            "generateCookieValidationKey": [
-                "config/web.php"
-            ]
+//            "generateCookieValidationKey": [
+//                "config/web.php"
+//            ]
         },
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
