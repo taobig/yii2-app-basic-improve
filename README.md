@@ -10,6 +10,21 @@ The template contains the basic features including user login/logout and a conta
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
 
+### INSTALLATION
+**Install via Composer**  
+If you do not have Composer, you may install it by following the instructions at getcomposer.org.
+
+You can then install this project template using the following command:
+```
+create-project [-s|--stability STABILITY] [--prefer-source] [--prefer-dist] [--repository REPOSITORY] [--repository-url REPOSITORY-URL] [--dev] [--no-dev] [--no-custom-installers] [--no-scripts] [--no-progress] [--no-secure-http] [--keep-vcs] [--no-install] [--ignore-platform-reqs] [--] [<package>] [<directory>] [<version>]
+  
+  
+php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
+php composer.phar create-project --prefer-dist --stability=dev taobig/yii2-app-basic-improve
+
+```
+
+## Database
 ```
 CREATE DATABASE `yii2-app-basic-improve` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
