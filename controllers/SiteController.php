@@ -9,7 +9,7 @@ use app\components\filters\AccessControl;
 use app\components\Flash;
 use app\models\ContactForm;
 use app\models\LoginForm;
-use app\models\User;
+use app\models\UserIdentity;
 use Yii;
 use yii\captcha\CaptchaAction;
 use app\components\filters\VerbFilter;
@@ -96,7 +96,7 @@ class SiteController extends BaseWebController
                 if (empty($oldPassword) || empty($newPassword)) {
                     throw new ParamException('新旧密码都不能为空');
                 }
-                $user = User::findIdentity(Yii::$app->user->id);
+                $user = UserIdentity::findIdentity(Yii::$app->user->id);
                 $user->updatePassword($oldPassword, $newPassword);
                 Flash::setSuccess('更改密码成功');
             } catch (UserException $e) {

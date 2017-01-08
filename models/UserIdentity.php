@@ -5,7 +5,7 @@ namespace app\models;
 use app\components\exceptions\UserException;
 use yii\base\Exception;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+class UserIdentity extends \yii\base\Object implements \yii\web\IdentityInterface
 {
     public $id;
     public $username;
@@ -29,9 +29,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             return $user;
         }
         return null;
-
-
-        //return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }
 
     /**
@@ -40,8 +37,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public static function findIdentityByAccessToken($token, $type = null)
     {
         throw new Exception("unsupport !");
-
-        //return null;
     }
 
     /**
@@ -61,7 +56,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             return $user;
         }
         return null;
-        //return null;
     }
 
     /**
