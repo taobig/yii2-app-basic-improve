@@ -9,11 +9,11 @@ class QResponse
     }
 
     /**
-     * @param mixed $data
+     * @param array $data
      * @param string $message
      * @return array
      */
-    public static function successJsonResponse($data, string $message = ''): array
+    public static function successJsonResponse(array $data, string $message = ''): array
     {
         $result = [
             'status' => 0,
@@ -44,7 +44,7 @@ class QResponse
 
 class QUniqueRequest
 {
-    static $_unique_request_id = null;
+    private static $_unique_request_id = null;
 
     public static function getId(): string
     {
@@ -54,22 +54,11 @@ class QUniqueRequest
         return self::$_unique_request_id;
     }
 
-    public static function setId($uni_id)
-    {
-        self::$_unique_request_id = $uni_id;
-    }
-
-    /**
-     * 规则:
-     * ip + pid + timestamp
-     */
     private static function _generateId(): string
     {
         $host = gethostname();
-        $pid = getmypid();
-        $time = time();
-
-        return "$host-$pid-$time";
+        $pid = sprintf('%05s', getmypid());
+        return uniqid("$host-$pid-");
     }
 }
 

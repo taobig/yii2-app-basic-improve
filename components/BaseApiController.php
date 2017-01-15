@@ -52,11 +52,11 @@ class BaseApiController extends Controller
     }
 
     /**
-     * @param mixed $data
+     * @param array $data
      * @param string $message
      * @return array
      */
-    public function successJsonResponse($data, string $message = '')
+    public function successJsonResponse(array $data, string $message = '')
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
         return \QResponse::successJsonResponse($data, $message);
