@@ -67,10 +67,10 @@ class QCustomLogger
     const TYPE_ERROR = 'error';
     const TYPE_INFO = 'info';
     const TYPE_DEBUG = 'debug';
-    
-    public static function logException(\Throwable $e)
+
+    public static function logException(\Throwable $e, string $message = '')
     {
-        self::log(self::TYPE_ERROR, $e->getMessage(), $e->getTrace(), $e->getFile(), $e->getLine());
+        self::log(self::TYPE_ERROR, $message ?: $e->getMessage(), $e->getTrace(), $e->getFile(), $e->getLine());
     }
 
     /**
@@ -100,14 +100,29 @@ class QCustomLogger
         file_put_contents(self::_getLogFile(), implode(";", $log) . "\n", FILE_APPEND);
     }
 
+    private static function _getLogDirectory(): string
+    {
+        $directoryPath = Yii::getAlias('@runtime');
+        //$directoryPath = '/var/log/q';
+        return $directoryPath;
+    }
+
     private static function _getLogFile(): string
     {
-        $runtimePath = Yii::getAlias('@runtime');
-        //$runtimePath = '/var/log/q';
+        $directoryPath = self::_getLogDirectory();
         if (php_sapi_name() === 'cli') {//root
-            return $runtimePath . '/console_error.log';
+            return $directoryPath . '/console_error.log';
         }
-        return $runtimePath . '/error.log';
+        return $directoryPath . '/error.log';
+    }
+
+    public static function access($message)
+    {
+        if (!(is_string($message))) {
+            $message = json_encode($message, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        }
+        $directoryPath = self::_getLogDirectory();
+        file_put_contents($directoryPath . '/access.log', $message, FILE_APPEND);
     }
 
     public static function debug($message, string $filename = 'debug.log')
@@ -115,20 +130,10 @@ class QCustomLogger
         if (!(is_string($message))) {
             $message = json_encode($message, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
-        $runtimePath = Yii::getAlias('@runtime');
-        //$runtimePath = '/var/log/q';
+        $directoryPath = self::_getLogDirectory();
         if (php_sapi_name() === 'cli') {//root
             $filename = "console_{$filename}";
         }
-        file_put_contents("{$runtimePath}/{$filename}", $message . PHP_EOL, FILE_APPEND);
-    }
-
-    public static function access($message)
-    {
-        if (!(is_string($message))) {
-            $message = json_encode($message, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        }
-
-        file_put_contents(Yii::getAlias('@runtime') . '/access.log', $message, FILE_APPEND);
+        file_put_contents("{$directoryPath}/{$filename}", $message . PHP_EOL, FILE_APPEND);
     }
 }
