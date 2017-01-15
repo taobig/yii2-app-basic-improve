@@ -78,14 +78,10 @@ class QCustomLogger
     const TYPE_ERROR = 'error';
     const TYPE_INFO = 'info';
     const TYPE_DEBUG = 'debug';
-
-    /**
-     * @param string $error_type
-     * @param \Throwable $e
-     */
-    public static function logException($error_type, $e)
+    
+    public static function logException(\Throwable $e)
     {
-        self::log($error_type, $e->getMessage(), $e->getTrace(), $e->getFile(), $e->getLine());
+        self::log(self::TYPE_ERROR, $e->getMessage(), $e->getTrace(), $e->getFile(), $e->getLine());
     }
 
     /**

@@ -102,7 +102,7 @@ class SiteController extends BaseWebController
             } catch (UserException $e) {
                 Flash::setDanger($e->getMessage());
             } catch (\Throwable $e) {
-                \QCustomLogger::logException(\QCustomLogger::TYPE_ERROR, $e);
+                \QCustomLogger::logException($e);
                 Flash::setDanger('系统异常，请重试');
             }
         }
