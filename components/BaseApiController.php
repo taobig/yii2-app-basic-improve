@@ -33,20 +33,20 @@ class BaseApiController extends Controller
 
     public function beforeAction($action)
     {
-        $userIp = \Yii::$app->request->userIP;
-        $log = "\n[{$userIp}][" . \Yii::$app->request->getMethod() . '][' . $action->getUniqueId() . "]\n";
         $params = \Yii::$app->request->getRawBody();
-        if (!empty($params)) {
-            $log .= $params;
-        }
-        \QCustomLogger::access($log . "\n");
+        \QCustomLogger::access($params, true);
 
         return parent::beforeAction($action);
     }
 
     public function afterAction($action, $result)
     {
-        \QCustomLogger::access($result);
+        if (!is_string($result)) {
+            $message = json_encode($result, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        } else {
+            $message = $result;
+        }
+        \QCustomLogger::access($message);
 
         return parent::afterAction($action, $result);
     }

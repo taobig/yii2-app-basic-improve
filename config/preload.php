@@ -116,13 +116,22 @@ class QCustomLogger
         return $directoryPath . '/error.log';
     }
 
-    public static function access($message)
+    public static function access(string $message, bool $isBegin = false)
     {
-        if (!(is_string($message))) {
-            $message = json_encode($message, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $dt = date('Y-m-d H:i:s');
+        if ($isBegin) {
+            $url = $_SERVER['REQUEST_URI'];
+            $method = $_SERVER['REQUEST_METHOD'];
+            $remote_ip = $_SERVER['REMOTE_ADDR'];
+            $title = QUniqueRequest::getId() . "\n[{$dt}] [{$remote_ip}] [{$method}] [{$url}] " . PHP_EOL;
+            $log_body = $title . $message . PHP_EOL;
+        } else {
+            $log_body = QUniqueRequest::getId() . "\n {$dt}>>> " . $message . PHP_EOL . PHP_EOL;
         }
+
+        $access_log_filename = 'access-' . date('Ymd') . '.log';
         $directoryPath = self::_getLogDirectory();
-        file_put_contents($directoryPath . '/access.log', $message, FILE_APPEND);
+        file_put_contents($directoryPath . '/' . $access_log_filename, $log_body, FILE_APPEND);
     }
 
     public static function debug($message, string $filename = 'debug.log')
