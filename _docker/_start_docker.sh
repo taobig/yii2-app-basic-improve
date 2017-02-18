@@ -2,8 +2,8 @@
 
 
 container_name=yii2-app-basic-improve;
-username=`whoami`;
 expose_port=8080;
+username=`whoami`;
 docker stop ${container_name} && docker rm ${container_name};
 
 #code_dir=C:\Users\${username}\code\${container_name};

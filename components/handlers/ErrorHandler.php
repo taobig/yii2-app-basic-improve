@@ -55,6 +55,9 @@ class ErrorHandler extends \yii\web\ErrorHandler
         if ($exception instanceof BaseException) {//will log by BaseException::__destruct()
             return;
         }
+        if($exception instanceof NotFoundHttpException){//don't log
+            return;
+        }
 //        $category = get_class($exception);
 //        if ($exception instanceof HttpException) {
 //            $category = 'yii\\web\\HttpException:' . $exception->statusCode;
