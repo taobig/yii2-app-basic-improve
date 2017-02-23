@@ -17,6 +17,6 @@ abstract class BaseException extends \Exception
                 $message .= ' ' . $response;
             }
         }
-        \QCustomLogger::log($this, $message);
+        \QCustomLogger::logException($this, $message);
     }
 }

@@ -3,11 +3,6 @@
 class QResponse
 {
 
-    public static function getProjectName(): string
-    {
-        return CURRENT_PROJECT_NAME;
-    }
-
     /**
      * @param array $data
      * @param string $message
@@ -70,7 +65,7 @@ class QCustomLogger
 
     public static function logException(\Throwable $e, string $message = '')
     {
-        self::log(self::TYPE_ERROR, $message ?: $e->getMessage(), $e->getTrace(), $e->getFile(), $e->getLine());
+        self::log(self::TYPE_ERROR, $message ?: $e->getMessage(), $e->getTraceAsString(), $e->getFile(), $e->getLine());
     }
 
     /**
@@ -78,23 +73,23 @@ class QCustomLogger
      *
      * @param string $error_type
      * @param string $message
-     * @param array $trace
+     * @param string $trace
      * @param string $filename
      * @param int $line
      */
-    public static function log(string $error_type, string $message, array $trace = [], string $filename = '', int $line = 0)
+    public static function log(string $error_type, string $message, string $trace = '', string $filename = '', int $line = 0)
     {
         $log = [
-            'project_name' => QResponse::getProjectName(),
+            'project_name' => CURRENT_PROJECT_NAME,
             'unique_id' => QUniqueRequest::getId(),
             'error_type' => $error_type,
             'datetime' => date('Y-m-d H:i:s'),
-            'message' => $message,
-            'trace' => urlencode(json_encode($trace)),
+            'request_uri' => $_SERVER['REQUEST_URI'] ?? '',
+            'message' => str_replace([';', "\r\n", "\n", "\r"], ',', $message),
+            'trace' => str_replace([';', "\r\n", "\n", "\r"], ',', $trace),
             'filename' => $filename,
             'line' => $line,
-            'request_uri' => isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '',
-            'http_referer' => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''
+            'http_referer' => $_SERVER['HTTP_REFERER'] ?? ''
         ];
 
         file_put_contents(self::_getLogFile(), implode(";", $log) . "\n", FILE_APPEND);
