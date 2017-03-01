@@ -18,8 +18,6 @@ In order to use docker(or docker-toolbox), you must download this project to `$H
 
 You can then install this project template using the following command:
 ```
-create-project [-s|--stability STABILITY] [--prefer-source] [--prefer-dist] [--repository REPOSITORY] [--repository-url REPOSITORY-URL] [--dev] [--no-dev] [--no-custom-installers] [--no-scripts] [--no-progress] [--no-secure-http] [--keep-vcs] [--no-install] [--ignore-platform-reqs] [--] [<package>] [<directory>] [<version>]
-  
   
 php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
 php composer.phar create-project --prefer-dist --stability=dev taobig/yii2-app-basic-improve
