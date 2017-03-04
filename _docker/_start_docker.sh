@@ -2,7 +2,7 @@
 
 
 container_name=yii2-app-basic-improve;
-expose_port=8080;
+expose_port=80;
 username=`whoami`;
 docker stop ${container_name} && docker rm ${container_name};
 

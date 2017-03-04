@@ -14,7 +14,7 @@ features to your application.
 **Install via Composer**  
 If you do not have Composer, you may install it by following the instructions at getcomposer.org.
 
-In order to use docker(or docker-toolbox), you must download this project to `$HOME/code`($HOME/code on Unix or %USERPROFILE%/code on Windows.).
+In order to use Docker(or Docker-toolbox), you must download this project to `$HOME/code`($HOME/code on Unix or %USERPROFILE%/code on Windows.).
 
 You can then install this project template using the following command:
 ```
@@ -23,7 +23,8 @@ php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
 php composer.phar create-project --prefer-dist --stability=dev taobig/yii2-app-basic-improve
 
 ```
-then run `$HOME/code/yii2-app-basic-improve/_docker/_start_docker.sh` to start a docker container.
+then run `$HOME/code/yii2-app-basic-improve/_docker/_start_docker.sh` to start a docker container.   
+The homepage is on http://localhost(Docker)  or http://192.168.99.100(Docker-toolbox)
 
 ## Database
 ```
