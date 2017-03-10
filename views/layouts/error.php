@@ -33,13 +33,16 @@ $this->beginPage();
             <h4 style="margin-bottom: 0"><strong><?= nl2br(Html::encode($message)) ?></strong></h4>
         </div>
 
-<!--        <p><a>返回首页</a>  <a>返回上一页</a></p>-->
-<!--        <p>-->
-<!--            The above error occurred while the Web server was processing your request.-->
-<!--        </p>-->
-<!--        <p>-->
-<!--            Please contact us if you think this is a server error. Thank you.-->
-<!--        </p>-->
+        <p style="margin:20px 0 0;">
+            <a href="<?= \Yii::$app->request->getHostInfo(); ?>">
+                <button type="button" class="btn btn-link">返回首页</button>
+            </a>
+            <?php if (Yii::$app->request->getReferrer()) { ?>
+                <a href="<?= Yii::$app->request->getReferrer() ?>">
+                    <button type="button" class="btn btn-link">返回上一页</button>
+                </a>
+            <?php } ?>
+        </p>
 
     </div>
 </div>
