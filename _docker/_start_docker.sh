@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 container_name=yii2-app-basic-improve;
 expose_port=80;
 username=`whoami`;
@@ -26,7 +25,7 @@ custom_nginx_conf_dir=${code_dir}/_docker;
 dockerRun;
 
 if [ $? -eq 0 ];then
-    echo "success";
+    echo "success, =====>>>>> 192.168.99.100:${expose_port}";
     docker ps;
 else
 
@@ -35,6 +34,7 @@ else
     dockerRun;
 
     if [ $? -eq 0 ];then
+        echo "success, =====>>>>> 127.0.0.1:${expose_port}";
         docker ps;
     else
         echo "failed";
