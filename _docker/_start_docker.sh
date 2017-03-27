@@ -11,7 +11,7 @@ dockerRun(){
     echo code_dir=${code_dir};
     echo custom_nginx_conf_dir=${custom_nginx_conf_dir};
     echo
-    docker run --name ${container_name} -p ${expose_port}:80  -v ${code_dir}:/app -v ${custom_nginx_conf_dir}:/etc/nginx/conf.d -d taobig/nginx_php7:php71;
+    docker run --name ${container_name} -p ${expose_port}:80  -v ${code_dir}:/app -v ${custom_nginx_conf_dir}:/etc/nginx/conf.d -d taobig/nginx_php7:php70;
 }
 
 #Docker
