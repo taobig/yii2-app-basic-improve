@@ -3,11 +3,6 @@
 class QResponse
 {
 
-    /**
-     * @param array $data
-     * @param string $message
-     * @return array
-     */
     public static function successJsonResponse(array $data, string $message = ''): array
     {
         $result = [
@@ -68,15 +63,6 @@ class QCustomLogger
         self::log(self::TYPE_ERROR, $message ?: $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTraceAsString());
     }
 
-    /**
-     * 记录日志
-     *
-     * @param string $error_type
-     * @param string $message
-     * @param string $trace
-     * @param string $filename
-     * @param int $line
-     */
     public static function log(string $error_type, string $message, string $filename = '', int $line = 0, string $trace = '')
     {
         $log = [
