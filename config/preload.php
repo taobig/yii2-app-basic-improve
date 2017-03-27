@@ -65,7 +65,7 @@ class QCustomLogger
 
     public static function logException(\Throwable $e, string $message = '')
     {
-        self::log(self::TYPE_ERROR, $message ?: $e->getMessage(), $e->getTraceAsString(), $e->getFile(), $e->getLine());
+        self::log(self::TYPE_ERROR, $message ?: $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTraceAsString());
     }
 
     /**
@@ -77,7 +77,7 @@ class QCustomLogger
      * @param string $filename
      * @param int $line
      */
-    public static function log(string $error_type, string $message, string $trace = '', string $filename = '', int $line = 0)
+    public static function log(string $error_type, string $message, string $filename = '', int $line = 0, string $trace = '')
     {
         $log = [
             'project_name' => CURRENT_PROJECT_NAME,
@@ -86,9 +86,9 @@ class QCustomLogger
             'datetime' => date('Y-m-d H:i:s'),
             'request_uri' => $_SERVER['REQUEST_URI'] ?? '',
             'message' => str_replace([';', "\r\n", "\n", "\r"], ',', $message),
-            'trace' => str_replace([';', "\r\n", "\n", "\r"], ',', $trace),
             'filename' => $filename,
             'line' => $line,
+            'trace' => str_replace([';', "\r\n", "\n", "\r"], ',', $trace),
             'http_referer' => $_SERVER['HTTP_REFERER'] ?? ''
         ];
 
