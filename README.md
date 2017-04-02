@@ -29,7 +29,7 @@ php composer.phar create-project --prefer-dist --stability=dev taobig/yii2-app-b
 
 ```
 then run `$HOME/code/yii2-app-basic-improve/_docker/_start_docker.sh` to start a docker container.   
-The homepage is on http://localhost(Docker)  or http://192.168.99.100(Docker-toolbox)
+The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-toolbox)
 
 ## Database
 ```
