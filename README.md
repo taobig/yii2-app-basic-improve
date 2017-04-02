@@ -10,6 +10,11 @@ The template contains the basic features including user login/logout and a conta
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
 
+[![Latest Stable Version](https://poser.pugx.org/taobig/yii2-app-basic-improve/v/stable)](https://packagist.org/packages/taobig/yii2-app-basic-improve)
+[![Total Downloads](https://poser.pugx.org/taobig/yii2-app-basic-improve/downloads)](https://packagist.org/packages/taobig/yii2-app-basic-improve)
+[![Latest Unstable Version](https://poser.pugx.org/taobig/yii2-app-basic-improve/v/unstable)](https://packagist.org/packages/taobig/yii2-app-basic-improve)
+[![License](https://poser.pugx.org/taobig/yii2-app-basic-improve/license)](https://packagist.org/packages/taobig/yii2-app-basic-improve)
+
 ### INSTALLATION
 **Install via Composer**  
 If you do not have Composer, you may install it by following the instructions at getcomposer.org.
