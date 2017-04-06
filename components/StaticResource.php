@@ -3,7 +3,9 @@
 namespace app\components;
 
 
+use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\View;
+use yii\web\YiiAsset;
 
 class StaticResource
 {
@@ -39,20 +41,20 @@ class StaticResource
         return $staticFile;
     }
 
-    public static function loadScript(View $view, string $path, int $position = View::POS_END)
+    public static function loadScript(View $view, string $path, array $depends = [YiiAsset::class, BootstrapPluginAsset::class], int $position = View::POS_END)
     {
         if ($path[0] != '/') {
             $path = '/' . $path;
         }
-        $view->registerJsFile(static::src($path), ['position' => $position]);
+        $view->registerJsFile(static::src($path), ['position' => $position, 'depends' => $depends]);
     }
 
-    public static function loadCompressedScript(View $view, string $path, int $position = View::POS_END)
+    public static function loadCompressedScript(View $view, string $path, array $depends = [YiiAsset::class, BootstrapPluginAsset::class], int $position = View::POS_END)
     {
         if ($path[0] != '/') {
             $path = '/' . $path;
         }
-        $view->registerJsFile($path, ['position' => $position]);
+        $view->registerJsFile($path, ['position' => $position, 'depends' => $depends]);
     }
 
     public static function loadStyle(View $view, string $path, int $position = View::POS_END)
