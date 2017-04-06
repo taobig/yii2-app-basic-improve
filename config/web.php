@@ -7,6 +7,7 @@ require(__DIR__ . '/preload.php');
 
 $config = [
     'id' => 'basic',
+    'name' => CURRENT_PROJECT_NAME,
     'language' => 'zh-CN',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -16,6 +17,18 @@ $config = [
         ],
     ],
     'components' => [
+//        'mailer' => [
+//            'class' => yii\swiftmailer\Mailer::class,
+////            'useFileTransport' => true,
+//            'transport' => [
+//                'class' => Swift_SmtpTransport::class,
+//                'host' => '',
+//                'username' => '',
+//                'password' => '',
+////                'port' => '587',
+////                'encryption' => 'tls',
+//            ],
+//        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '',
