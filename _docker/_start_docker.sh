@@ -40,5 +40,10 @@ else
         echo "failed";
         echo
     fi
-
 fi
+
+#init
+cp web/index-example.php web/index.php;
+sed -i "s/die;//" web/index.php;
+sed -i "s/\/\/defined('YII_DEBUG')/defined('YII_DEBUG')/" web/index.php;
+sed -i "s/\/\/defined('YII_ENV')/defined('YII_DEBUG')/" web/index.php;
