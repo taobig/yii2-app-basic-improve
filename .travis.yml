@@ -19,12 +19,12 @@ install:
 # setup application:
   - |
     sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
-script:
-  - |
     composer require "codeception/base: ^2.2.3",
     composer require "codeception/verify: ~0.3.1",
     composer require "codeception/specify: ~0.4.3"
 
+script:
+#  - |
     cp web/index-example.php web/index.php
     sed -i "s/die;//" web/index.php
     sed -i "s/\/\/defined('YII_DEBUG')/defined('YII_DEBUG')/" web/index.php
@@ -32,4 +32,3 @@ script:
 
     php -S localhost:8080 -t web > /dev/null 2>&1 &
 #    vendor/bin/codecept run
-    echo "OK"
