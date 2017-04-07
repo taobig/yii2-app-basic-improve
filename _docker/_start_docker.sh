@@ -43,7 +43,10 @@ else
 fi
 
 #init
-cp web/index-example.php web/index.php;
-sed -i "s/die;//" web/index.php;
-sed -i "s/\/\/defined('YII_DEBUG')/defined('YII_DEBUG')/" web/index.php;
-sed -i "s/\/\/defined('YII_ENV')/defined('YII_DEBUG')/" web/index.php;
+config_path=$(cd `dirname $0`; pwd);
+app_path=`dirname $config_path`;
+
+cp ${app_path}/web/index-example.php ${app_path}/web/index.php;
+sed -i "s/die;//" ${app_path}/web/index.php;
+sed -i "s/\/\/defined('YII_DEBUG')/defined('YII_DEBUG')/" ${app_path}/web/index.php;
+sed -i "s/\/\/defined('YII_ENV')/defined('YII_ENV')/" ${app_path}/web/index.php;
