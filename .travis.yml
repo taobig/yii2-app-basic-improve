@@ -3,3 +3,33 @@ php:
   - '7.0'
   - '7.1'
   - nightly
+
+# faster builds on new travis setup not using sudo
+sudo: false
+
+# cache vendor dirs
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - travis_retry composer self-update && composer --version
+  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
+  - travis_retry composer update --dev --prefer-dist --no-interaction
+# setup application:
+  - |
+    sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
+script:
+  - |
+    composer require "codeception/base: ^2.2.3",
+    composer require "codeception/verify: ~0.3.1",
+    composer require "codeception/specify: ~0.4.3"
+
+    cp web/index-example.php web/index.php
+    sed -i "s/die;//" web/index.php
+    sed -i "s/\/\/defined('YII_DEBUG')/defined('YII_DEBUG')/" web/index.php
+    sed -i "s/\/\/defined('YII_ENV')/defined('YII_DEBUG')/" web/index.php
+
+    php -S localhost:8080 -t web > /dev/null 2>&1 &
+#    vendor/bin/codecept run
+    echo "OK"
