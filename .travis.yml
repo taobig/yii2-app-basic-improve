@@ -2,7 +2,6 @@ language: php
 php:
   - '7.0'
   - '7.1'
-  - nightly
 
 # faster builds on new travis setup not using sudo
 sudo: false
@@ -25,6 +24,7 @@ install:
 
 script:
 #  - |
+    phpunit -v
     cp web/index-example.php web/index.php
     sed -i "s/die;//" web/index.php
     sed -i "s/\/\/defined('YII_DEBUG')/defined('YII_DEBUG')/" web/index.php
