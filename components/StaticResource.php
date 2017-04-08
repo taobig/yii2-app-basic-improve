@@ -57,20 +57,20 @@ class StaticResource
         $view->registerJsFile($path, ['position' => $position, 'depends' => $depends]);
     }
 
-    public static function loadStyle(View $view, string $path, int $position = View::POS_END)
+    public static function loadStyle(View $view, string $path, array $depends = [YiiAsset::class, BootstrapPluginAsset::class], int $position = View::POS_END)
     {
         if ($path[0] != '/') {
             $path = '/' . $path;
         }
-        $view->registerCssFile(static::src($path), ['position' => $position]);
+        $view->registerCssFile(static::src($path), ['position' => $position, 'depends' => $depends]);
     }
 
-    public static function loadCompressedStyle(View $view, string $path, int $position = View::POS_END)
+    public static function loadCompressedStyle(View $view, string $path, array $depends = [YiiAsset::class, BootstrapPluginAsset::class], int $position = View::POS_END)
     {
         if ($path[0] != '/') {
             $path = '/' . $path;
         }
-        $view->registerCssFile($path, ['position' => $position]);
+        $view->registerCssFile($path, ['position' => $position, 'depends' => $depends]);
     }
 }
 
