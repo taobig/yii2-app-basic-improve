@@ -1,6 +1,8 @@
 <?php
 
-//const STATIC_HOST = 'http://localhost';
+//const STATIC_RESOURCE_HOST = 'http://localhost';
+const STATIC_RESOURCE_VERSION = 2017001;
+
 const CURRENT_PROJECT_NAME = 'project_name';
 $params = require(__DIR__ . '/params.php');
 require(__DIR__ . '/preload.php');

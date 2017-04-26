@@ -18,7 +18,7 @@ class StaticResource
      */
     private static function src(string $staticFile): string
     {
-        if (!YII_DEBUG && defined("STATIC_HOST") && !empty(STATIC_HOST)) {
+        if (!YII_DEBUG && defined("STATIC_RESOURCE_HOST") && !empty(STATIC_RESOURCE_HOST)) {
             $buildDirectory = 'build';
 
             if (static::$manifestContent === null) {
@@ -33,10 +33,12 @@ class StaticResource
             if (static::$manifestContent !== null) {
                 $_index = substr($staticFile, 1, strlen($staticFile) - 1);
                 if (isset(static::$manifestContent[$_index])) {
-                    return STATIC_HOST . $buildDirectory . '/' . static::$manifestContent[$_index];
+                    return STATIC_RESOURCE_HOST . $buildDirectory . '/' . static::$manifestContent[$_index];
                 }
             }
-            return STATIC_HOST . $staticFile;
+            return STATIC_RESOURCE_HOST . $staticFile;
+        } else if (!YII_DEBUG && defined("STATIC_RESOURCE_VERSION")) {
+            return $staticFile . '?v=' . STATIC_RESOURCE_VERSION;
         }
         return $staticFile;
     }
