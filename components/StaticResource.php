@@ -10,7 +10,7 @@ use yii\web\YiiAsset;
 class StaticResource
 {
 
-    static $manifestContent;
+    private static $manifestContent;
 
     /**
      * @param string $staticFile must start with '/'
@@ -21,19 +21,19 @@ class StaticResource
         if (!YII_DEBUG && defined("STATIC_RESOURCE_HOST") && !empty(STATIC_RESOURCE_HOST)) {
             $buildDirectory = 'build';
 
-            if (static::$manifestContent === null) {
+            if (self::$manifestContent === null) {
                 $manifestPath = \Yii::getAlias('@webroot/build/rev-manifest.json');
                 if (file_exists($manifestPath)) {
                     $content = file_get_contents($manifestPath);
                     if ($content) {
-                        static::$manifestContent = json_decode($content, true);
+                        self::$manifestContent = json_decode($content, true);
                     }
                 }
             }
-            if (static::$manifestContent !== null) {
+            if (self::$manifestContent !== null) {
                 $_index = substr($staticFile, 1, strlen($staticFile) - 1);
-                if (isset(static::$manifestContent[$_index])) {
-                    return STATIC_RESOURCE_HOST . $buildDirectory . '/' . static::$manifestContent[$_index];
+                if (isset(self::$manifestContent[$_index])) {
+                    return STATIC_RESOURCE_HOST . $buildDirectory . '/' . self::$manifestContent[$_index];
                 }
             }
             return STATIC_RESOURCE_HOST . $staticFile;
@@ -48,7 +48,7 @@ class StaticResource
         if ($path[0] != '/') {
             $path = '/' . $path;
         }
-        $view->registerJsFile(static::src($path), ['position' => $position, 'depends' => $depends]);
+        $view->registerJsFile(self::src($path), ['position' => $position, 'depends' => $depends]);
     }
 
     public static function loadCompressedScript(View $view, string $path, array $depends = [YiiAsset::class, BootstrapPluginAsset::class], int $position = View::POS_END)
@@ -64,7 +64,7 @@ class StaticResource
         if ($path[0] != '/') {
             $path = '/' . $path;
         }
-        $view->registerCssFile(static::src($path), ['position' => $position, 'depends' => $depends]);
+        $view->registerCssFile(self::src($path), ['position' => $position, 'depends' => $depends]);
     }
 
     public static function loadCompressedStyle(View $view, string $path, array $depends = [YiiAsset::class, BootstrapPluginAsset::class], int $position = View::POS_END)
@@ -73,6 +73,14 @@ class StaticResource
             $path = '/' . $path;
         }
         $view->registerCssFile($path, ['position' => $position, 'depends' => $depends]);
+    }
+
+    public static function renderScript(string $path)
+    {
+        if ($path[0] != '/') {
+            $path = '/' . $path;
+        }
+        return sprintf('<script src="%s"></script>', self::src($path));
     }
 }
 
