@@ -19,7 +19,7 @@ features to your application.
 **Install via Composer**  
 If you do not have Composer, you may install it by following the instructions at getcomposer.org.
 
-In order to use Docker(or Docker-toolbox), you must download this project to `$HOME/code`($HOME/code on Unix or %USERPROFILE%/code on Windows.).
+In order to use Docker(or Docker-toolbox), you must download this project to `$HOME/code`($HOME/code on *nix or %USERPROFILE%/code on Windows.).
 
 You can then install this project template using the following command:
 ```
