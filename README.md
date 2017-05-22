@@ -17,7 +17,7 @@ features to your application.
 
 ### INSTALLATION
 **Install via Composer**  
-If you do not have Composer, you may install it by following the instructions at getcomposer.org.
+If you do not have Composer, you may install it refer to [getcomposer.org](https://getcomposer.org/download/).
 
 In order to use Docker(or Docker-toolbox), you must download this project to `$HOME/code`($HOME/code on *nix or %USERPROFILE%/code on Windows.).
 
