@@ -1,6 +1,6 @@
 <?php
 
-const CURRENT_PROJECT_NAME = 'm_check';
+const CURRENT_PROJECT_NAME = 'project_name';
 $params = require(__DIR__ . '/params.php');
 require(__DIR__ . '/preload.php');
 
