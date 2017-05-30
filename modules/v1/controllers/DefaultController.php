@@ -4,11 +4,11 @@ namespace app\modules\v1\controllers;
 
 use app\components\BaseApiController;
 
-class TestController extends BaseApiController
+class DefaultController extends BaseApiController
 {
 
     /**
-     * @link 'POST v1/test/all'
+     * @link 'POST v1/default/all'
      */
     public function actionAll()
     {
