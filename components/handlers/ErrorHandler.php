@@ -14,11 +14,11 @@ class ErrorHandler extends \yii\web\ErrorHandler
 
     public function renderException($exception)
     {
-        $errorMessage = '系统异常，请稍后重试 ' . date('Y-m-d H:i:s');
+        $errorMessage = '系统异常，请稍后重试 ' . date('Y-m-d');
         if ($exception instanceof UserException) {
             $errorMessage = $exception->getMessage();
         } else {//Framework Exception
-            if($exception instanceof NotFoundHttpException){
+            if ($exception instanceof NotFoundHttpException) {
                 $errorMessage = $exception->getMessage();//Page not found.
             }
         }
@@ -40,9 +40,9 @@ class ErrorHandler extends \yii\web\ErrorHandler
             $response->format = Response::FORMAT_JSON;
             $response->data = \QResponse::errorJsonResponse($errorMessage);
         } else {
-            if($response->format == Response::FORMAT_JSON){
+            if ($response->format == Response::FORMAT_JSON) {
                 $response->data = \QResponse::errorJsonResponse($errorMessage);
-            }else{
+            } else {
                 $response->data = Yii::$app->view->render('@app/views/layouts/error', ['name' => '出错了……', 'message' => $errorMessage]);
             }
         }
@@ -55,7 +55,7 @@ class ErrorHandler extends \yii\web\ErrorHandler
         if ($exception instanceof BaseException) {//will log by BaseException::__destruct()
             return;
         }
-        if($exception instanceof NotFoundHttpException){//don't log
+        if ($exception instanceof NotFoundHttpException) {//don't log
             return;
         }
 //        $category = get_class($exception);
