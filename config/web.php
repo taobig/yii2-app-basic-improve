@@ -1,6 +1,6 @@
 <?php
 
-//const STATIC_RESOURCE_HOST = 'http://localhost';
+//const STATIC_RESOURCE_HOST = '';// "http://localhost/"
 const STATIC_RESOURCE_VERSION = 2017001;
 
 const CURRENT_PROJECT_NAME = 'project_name';

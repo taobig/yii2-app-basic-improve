@@ -18,8 +18,9 @@ class StaticResource
      */
     private static function src(string $staticFile): string
     {
-        if (!YII_DEBUG && defined("STATIC_RESOURCE_HOST") && !empty(STATIC_RESOURCE_HOST)) {
+        if (defined("STATIC_RESOURCE_HOST")) {
             $buildDirectory = 'build';
+            $prefix = empty(STATIC_RESOURCE_HOST) ? '/' : STATIC_RESOURCE_HOST;
 
             if (self::$manifestContent === null) {
                 $manifestPath = \Yii::getAlias('@webroot/build/rev-manifest.json');
@@ -33,12 +34,12 @@ class StaticResource
             if (self::$manifestContent !== null) {
                 $_index = substr($staticFile, 1, strlen($staticFile) - 1);
                 if (isset(self::$manifestContent[$_index])) {
-                    return STATIC_RESOURCE_HOST . $buildDirectory . '/' . self::$manifestContent[$_index];
+                    return $prefix . $buildDirectory . '/' . self::$manifestContent[$_index];
                 }
             }
-            return STATIC_RESOURCE_HOST . $staticFile;
-        } else if (!YII_DEBUG && defined("STATIC_RESOURCE_VERSION")) {
-            return $staticFile . '?v=' . STATIC_RESOURCE_VERSION;
+            return $prefix . $staticFile;
+        } else if (defined("STATIC_VERSION")) {
+            return $staticFile . '?v=' . STATIC_VERSION;
         }
         return $staticFile;
     }
