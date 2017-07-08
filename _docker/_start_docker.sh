@@ -2,7 +2,8 @@
 
 container_name=yii2-app-basic-improve;
 expose_port=80;
-username=`whoami`;
+#username=`whoami`;  username maybe different from the basename of home path
+home_basename=`basename $HOME`;
 docker stop ${container_name} 1>/dev/null 2>&1;
 docker rm   ${container_name} 1>/dev/null 2>&1;
 
@@ -22,7 +23,7 @@ dockerRun(){
 #DockerToolbox  The drive name("c") must be a lowercase; and must run in "Docker Quickstart Terminal"
 #code_dir=/c/Users/${username}/code/${container_name};
 
-code_dir=/c/Users/${username}/code/${container_name};
+code_dir=/c/Users/${home_basename}/code/${container_name};
 custom_nginx_conf_dir=${code_dir}/_docker;
 dockerRun;
 
@@ -30,7 +31,7 @@ if [ $? -eq 0 ];then
     echo "success, =====>>>>> 192.168.99.100:${expose_port}";
     docker ps;
 else
-    code_dir=c:/Users/${username}/code/${container_name};
+    code_dir=c:/Users/${home_basename}/code/${container_name};
     custom_nginx_conf_dir=${code_dir}/_docker;
     dockerRun;
 
