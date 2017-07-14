@@ -6,7 +6,7 @@ use app\components\BaseWebController;
 use app\components\exceptions\ParamException;
 use app\components\exceptions\UserException;
 use app\components\filters\AccessControl;
-use app\components\Flash;
+use app\components\FlashMessage;
 use app\models\ContactForm;
 use app\models\LoginForm;
 use app\models\UserIdentity;
@@ -98,12 +98,12 @@ class SiteController extends BaseWebController
                 }
                 $user = UserIdentity::findIdentity(Yii::$app->user->id);
                 $user->updatePassword($oldPassword, $newPassword);
-                Flash::setSuccess('更改密码成功');
+                FlashMessage::setSuccess('更改密码成功');
             } catch (UserException $e) {
-                Flash::setDanger($e->getMessage());
+                FlashMessage::setDanger($e->getMessage());
             } catch (\Throwable $e) {
                 \QCustomLogger::logException($e);
-                Flash::setDanger('系统异常，请重试');
+                FlashMessage::setDanger('系统异常，请重试');
             }
         }
 

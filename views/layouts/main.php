@@ -9,7 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\components\StaticResource;
-use app\components\Flash;
+use app\components\FlashMessage;
 
 \yii\web\YiiAsset::register($this);
 \yii\bootstrap\BootstrapAsset::register($this);
@@ -62,7 +62,7 @@ StaticResource::loadStyle($this, 'css/site.css');
     ?>
 
     <div class="container">
-        <?php if ($message = Flash::getSuccess()) { ?>
+        <?php if ($message = FlashMessage::getSuccess()) { ?>
             <div class="alert alert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -70,7 +70,7 @@ StaticResource::loadStyle($this, 'css/site.css');
                 <span><?php echo $message ?></span>
             </div>
         <?php } ?>
-        <?php if ($message = Flash::getDanger()) { ?>
+        <?php if ($message = FlashMessage::getDanger()) { ?>
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

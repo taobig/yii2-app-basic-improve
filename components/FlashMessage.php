@@ -3,7 +3,7 @@
 namespace app\components;
 
 
-class Flash
+class FlashMessage
 {
 
     public static function setSuccess(string $success_message)
