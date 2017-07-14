@@ -25,7 +25,7 @@ You can then install this project template using the following command:
 ```
   
 php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
-php composer.phar create-project --prefer-dist --stability=dev taobig/yii2-app-basic-improve
+php composer.phar create-project --prefer-dist taobig/yii2-app-basic-improve
 
 ```
 then run `$HOME/code/yii2-app-basic-improve/_docker/_start_docker.sh` to start a docker container.   
