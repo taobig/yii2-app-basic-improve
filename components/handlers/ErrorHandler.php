@@ -36,15 +36,13 @@ class ErrorHandler extends \yii\web\ErrorHandler
         }
 
         $response->setStatusCode(200);
-        if (\QResponse::isJsonResponse()) {
-            $response->format = Response::FORMAT_JSON;
+        if (\QResponse::isJsonResponse() || $response->format == Response::FORMAT_JSON) {
+            if ($response->format != Response::FORMAT_JSON) {
+                $response->format = Response::FORMAT_JSON;
+            }
             $response->data = \QResponse::errorJsonResponse($errorMessage);
         } else {
-            if ($response->format == Response::FORMAT_JSON) {
-                $response->data = \QResponse::errorJsonResponse($errorMessage);
-            } else {
-                $response->data = Yii::$app->view->render('@app/views/layouts/error', ['name' => '出错了……', 'message' => $errorMessage]);
-            }
+            $response->data = Yii::$app->view->render('@app/views/layouts/error', ['name' => '出错了……', 'message' => $errorMessage]);
         }
         $response->send();
     }
