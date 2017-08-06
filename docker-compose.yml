@@ -4,7 +4,7 @@ services:
     web:
         image: taobig/nginx_php70
         ports:
-            - "8080:80"
+            - "80:80"
         volumes:
             - .:/app
 #            - ./_docker:/etc/nginx/conf.d
