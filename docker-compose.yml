@@ -1,0 +1,14 @@
+version: "2.1"
+
+services:
+    web:
+        image: taobig/nginx_php70
+        ports:
+            - "8080:80"
+        volumes:
+            - .:/app
+#            - ./_docker:/etc/nginx/conf.d
+        dns:
+            - 223.5.5.5
+            - 223.6.6.6
+
