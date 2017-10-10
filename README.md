@@ -14,6 +14,7 @@ features to your application.
 [![Total Downloads](https://poser.pugx.org/taobig/yii2-app-basic-improve/downloads)](https://packagist.org/packages/taobig/yii2-app-basic-improve)
 [![Latest Unstable Version](https://poser.pugx.org/taobig/yii2-app-basic-improve/v/unstable)](https://packagist.org/packages/taobig/yii2-app-basic-improve)
 [![License](https://poser.pugx.org/taobig/yii2-app-basic-improve/license)](https://packagist.org/packages/taobig/yii2-app-basic-improve)
+[![Build Status](https://travis-ci.org/taobig/yii2-app-basic-improve.svg?branch=master)](https://travis-ci.org/taobig/yii2-app-basic-improve)
 
 ### INSTALLATION
 **Install via Composer**  
