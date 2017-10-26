@@ -7,8 +7,10 @@ cd ${app_path};
 docker-compose up -d;
 
 cp ${app_path}/web/index-example.php ${app_path}/web/index.php;
-sed -i "s/die;//" ${app_path}/web/index.php;
-sed -i "s/\/\/dev //" ${app_path}/web/index.php;
-sed -i "s/\/\/dev //" ${app_path}/web/index.php;
+# OS X sed handles the -i argument differently to the Linux version.
+# You can generate a command that might "work" for both by adding -e in this way:  sed -i -e
+sed -i -e "s/die;//" ${app_path}/web/index.php;
+sed -i -e "s/\/\/dev //" ${app_path}/web/index.php;
+sed -i -e "s/\/\/dev //" ${app_path}/web/index.php;
 
 docker-compose exec -u www web composer install;
