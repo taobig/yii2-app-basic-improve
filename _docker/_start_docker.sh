@@ -14,4 +14,4 @@ sed -i -e "s/\/\/dev //" ${app_path}/web/index.php;
 sed -i -e "s/\/\/dev //" ${app_path}/web/index.php;
 
 #docker-compose exec -u www web composer install;
-docker-compose exec -u www web bash -c "composer global require 'fxp/composer-asset-plugin:^1.2.0';composer install";
+docker-compose exec -u www web bash -c "composer global require 'fxp/composer-asset-plugin:^1.4.2';composer install";
