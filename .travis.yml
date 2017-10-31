@@ -14,7 +14,7 @@ cache:
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:^1.2.0"
-  - travis_retry composer update --dev --prefer-dist --no-interaction
+  - travis_retry composer update --prefer-dist --no-interaction
 # setup application:
   - |
     sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
@@ -26,9 +26,9 @@ script:
 #  - |
     phpunit -v
     cp web/index-example.php web/index.php
-    sed -i "s/die;//" web/index.php
-    sed -i "s/\/\/dev //" web/index.php;
-    sed -i "s/\/\/dev //" web/index.php;
+    sed -i -e "s/die;//" web/index.php;
+    sed -i -e "s/\/\/dev //" web/index.php;
+    sed -i -e "s/\/\/dev //" web/index.php;
 
     php -S localhost:8080 -t web > /dev/null 2>&1 &
 #    vendor/bin/codecept run
