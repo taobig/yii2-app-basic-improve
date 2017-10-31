@@ -19,8 +19,8 @@ install:
 # setup application:
   - |
     sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
-    composer require "codeception/base: ^2.2.3",
-    composer require "codeception/verify: ~0.3.1",
+    composer require "codeception/base: ^2.2.3"
+    composer require "codeception/verify: ~0.3.1"
     composer require "codeception/specify: ~0.4.3"
 
 script:
