@@ -25,7 +25,7 @@ In order to use Docker-Toolbox, you must download this project to `$HOME`($HOME 
 You can then install this project template using the following command:
 ```
   
-php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
+php composer.phar global require "fxp/composer-asset-plugin:^1.4.2"
 php composer.phar create-project --prefer-dist taobig/yii2-app-basic-improve
 
 ```
