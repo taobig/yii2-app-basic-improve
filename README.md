@@ -36,7 +36,7 @@ The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-t
 ```
 CREATE DATABASE `yii2-app-basic-improve` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
-CREATE TABLE `employee` (
+CREATE TABLE `yii2-app-basic-improve`.`employee` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `account` varchar(20) NOT NULL,
     `nickname` varchar(20) NOT NULL,
