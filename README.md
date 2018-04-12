@@ -29,7 +29,7 @@ php composer.phar global require "fxp/composer-asset-plugin:^1.4.2"
 php composer.phar create-project --prefer-dist taobig/yii2-app-basic-improve
 
 ```
-then run `<...dir...>/yii2-app-basic-improve/_docker/_start_docker.sh` to start a docker container.   
+then run `cd yii2-app-basic-improve; docker-compose up -d` to start a docker container.   
 The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-toolbox)
 
 ## Database
