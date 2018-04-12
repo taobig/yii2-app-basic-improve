@@ -29,8 +29,7 @@ before_script: echo "env.name=dev" >> ~/.phpenv/versions/$(phpenv version-name)/
 
 script:
 #  - |
-    phpunit -v
-
-    php -S localhost:8080 -t web > /dev/null 2>&1 &
-    php -r 'echo get_cfg_var("env.name");';
+    - phpunit -v
+    - php -S localhost:8080 -t web > /dev/null 2>&1 &
+    - php -r 'echo get_cfg_var("env.name");';
 #    vendor/bin/codecept run
