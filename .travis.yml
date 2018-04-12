@@ -32,5 +32,5 @@ script:
     phpunit -v
 
     php -S localhost:8080 -t web > /dev/null 2>&1 &
-    php -r 'get_cfg_var("env.name");';
+    php -r 'echo get_cfg_var("env.name");';
 #    vendor/bin/codecept run
