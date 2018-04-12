@@ -20,6 +20,3 @@ composer.phar
 
 # Mac DS_Store Files
 .DS_Store
-
-web/index.php
-yii

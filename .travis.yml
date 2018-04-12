@@ -25,13 +25,12 @@ install:
 #    composer require "codeception/verify: ~0.3.1"
 #    composer require "codeception/specify: ~0.4.3"
 
+before_script: echo "env.name=dev" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
 script:
 #  - |
     phpunit -v
-    cp web/index-example.php web/index.php
-    sed -i -e "s/die;//" web/index.php;
-    sed -i -e "s/\/\/dev //" web/index.php;
-    sed -i -e "s/\/\/dev //" web/index.php;
 
     php -S localhost:8080 -t web > /dev/null 2>&1 &
+    php -r 'get_cfg_var("env.name");';
 #    vendor/bin/codecept run

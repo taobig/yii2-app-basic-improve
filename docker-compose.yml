@@ -2,7 +2,8 @@ version: "2.1"
 
 services:
     web:
-        image: taobig/nginx_php70
+#        image: taobig/nginx_php70
+        build: ./_docker
         ports:
             - "80:80"
         volumes:
