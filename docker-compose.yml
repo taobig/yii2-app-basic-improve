@@ -1,9 +1,13 @@
-version: "2.1"
+version: "3"
 
 services:
     web:
 #        image: taobig/nginx_php70
-        build: ./_docker
+#        build: ./_docker
+        build:
+          context: ./_docker
+          args:
+            - env_name=dev
         ports:
             - "80:80"
         volumes:
