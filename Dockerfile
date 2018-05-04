@@ -1,4 +1,4 @@
-FROM taobig/nginx_php70
+FROM taobig/nginx-php7-fpm:7.0
 
 ARG env_name
 

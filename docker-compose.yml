@@ -2,18 +2,18 @@ version: "3"
 
 services:
     web:
-#        image: taobig/nginx_php70
+#        image: taobig/nginx-php7-fpm:7.0
 #        build: ./_docker
         build:
-          context: ./_docker
+          context: .
+          dockerfile: Dockerfile
           args:
             - env_name=dev
         ports:
             - "80:80"
         volumes:
             - .:/app
-#            - ./_docker:/etc/nginx/conf.d
-        dns:
-            - 223.5.5.5
-            - 223.6.6.6
+#        dns:
+#            - 223.5.5.5
+#            - 223.6.6.6
 
