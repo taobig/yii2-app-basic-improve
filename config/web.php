@@ -3,8 +3,6 @@
 //const STATIC_RESOURCE_HOST = '';// "http://localhost/"
 const STATIC_RESOURCE_VERSION = 2017001;
 
-const CURRENT_PROJECT_NAME = 'project_name';
-$params = require(__DIR__ . '/params.php');
 require(__DIR__ . '/preload.php');
 
 $config = [
@@ -79,11 +77,11 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class' => yii\debug\Module::class,
-        'allowedIPs' => ['127.0.0.1', '::1', '192.168.*.*'],
-    ];
+//    $config['bootstrap'][] = 'debug';
+//    $config['modules']['debug'] = [
+//        'class' => yii\debug\Module::class,
+//        'allowedIPs' => ['127.0.0.1', '::1', '192.168.*.*'],
+//    ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [

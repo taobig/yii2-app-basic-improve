@@ -1,5 +1,8 @@
 <?php
 
+const CURRENT_PROJECT_NAME = 'project_name';
+$params = require(__DIR__ . '/params.php');
+
 class QResponse
 {
 
