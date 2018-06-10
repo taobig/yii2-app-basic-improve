@@ -38,8 +38,8 @@ class StaticResource
                 }
             }
             return $prefix . $staticFile;
-        } else if (defined("STATIC_VERSION")) {
-            return $staticFile . '?v=' . STATIC_VERSION;
+        } else if (defined("STATIC_RESOURCE_VERSION")) {
+            return $staticFile . '?v=' . STATIC_RESOURCE_VERSION;
         }
         return $staticFile;
     }
