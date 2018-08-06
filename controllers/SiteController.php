@@ -23,7 +23,7 @@ class SiteController extends BaseWebController
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['password', 'logout'],
                 'rules' => [
                     [
@@ -34,7 +34,7 @@ class SiteController extends BaseWebController
                 ],
             ],
 //            'verbs' => [
-//                'class' => VerbFilter::className(),
+//                'class' => VerbFilter::class,
 //                'actions' => [
 //                    'logout' => ['post'],
 //                ],
