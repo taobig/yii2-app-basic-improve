@@ -2,11 +2,10 @@
 namespace app\components;
 
 use app\components\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\JsonParser;
 use yii\web\Response;
 
-class BaseJsonController extends Controller
+class BaseJsonController extends BaseController
 {
 
     public function behaviors()
@@ -51,24 +50,4 @@ class BaseJsonController extends Controller
         return parent::afterAction($action, $result);
     }
 
-    /**
-     * @param array $data
-     * @param string $message
-     * @return array
-     */
-    public function successJsonResponse(array $data, string $message = '')
-    {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        return \QResponse::successJsonResponse($data, $message);
-    }
-
-    /**
-     * @param string $message
-     * @return array
-     */
-    public function errorJsonResponse(string $message)
-    {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        return \QResponse::errorJsonResponse($message);
-    }
 }
