@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\components\BaseWebController;
+use app\components\BaseHtmlController;
 use app\components\exceptions\ParamException;
 use app\components\exceptions\UserException;
 use app\components\filters\AccessControl;
@@ -14,7 +14,7 @@ use Yii;
 use yii\captcha\CaptchaAction;
 use app\components\filters\VerbFilter;
 
-class SiteController extends BaseWebController
+class SiteController extends BaseHtmlController
 {
     /**
      * @inheritdoc

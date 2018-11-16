@@ -3,8 +3,9 @@ namespace app\components;
 
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Response;
 
-class BaseWebController extends Controller
+class BaseHtmlController extends Controller
 {
 
     public function behaviors()

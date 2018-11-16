@@ -2,9 +2,9 @@
 
 namespace app\modules\v1\controllers;
 
-use app\components\BaseApiController;
+use app\components\BaseJsonController;
 
-class DefaultController extends BaseApiController
+class DefaultController extends BaseJsonController
 {
 
     /**

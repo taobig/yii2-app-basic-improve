@@ -6,7 +6,7 @@ use yii\web\Controller;
 use yii\web\JsonParser;
 use yii\web\Response;
 
-class BaseApiController extends Controller
+class BaseJsonController extends Controller
 {
 
     public function behaviors()
