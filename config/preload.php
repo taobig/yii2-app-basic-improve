@@ -85,8 +85,12 @@ class QCustomLogger
 
     private static function _getLogDirectory(): string
     {
-        $directoryPath = Yii::getAlias('@runtime');
-        //$directoryPath = '/var/log/q';
+//        if (Yii::getAlias('@runtime', false)) {
+//            $directoryPath = Yii::getAlias('@runtime');
+//        } else {
+//            $directoryPath = __DIR__ . '/../runtime';
+//        }
+        $directoryPath = __DIR__ . '/../runtime';
         return $directoryPath;
     }
 
