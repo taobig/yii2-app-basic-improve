@@ -54,7 +54,6 @@ VALUES ('test', 'test', '$2y$10$TFvCpuZIcoxiA4k/z9YUH.aOd.qIgs3Orc1BaFmZH1VGvJWM
 # dev
 > gulp watch
 
-#pre-deploy
+# pre-deploy
 1. build static resources
 > gulp
-
