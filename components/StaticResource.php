@@ -20,7 +20,7 @@ class StaticResource
     {
         if (defined("STATIC_RESOURCE_HOST")) {
             $buildDirectory = 'build';
-            $prefix = empty(STATIC_RESOURCE_HOST) ? '/' : STATIC_RESOURCE_HOST;
+            $prefix = empty(STATIC_RESOURCE_HOST) ? '' : rtrim(STATIC_RESOURCE_HOST, '/') . '/';
 
             if (self::$manifestContent === null) {
                 $manifestPath = \Yii::getAlias('@webroot/build/rev-manifest.json');
@@ -32,15 +32,23 @@ class StaticResource
                 }
             }
             if (self::$manifestContent !== null) {
-                $_index = substr($staticFile, 1, strlen($staticFile) - 1);
+                $pos = strpos($staticFile, '?');
+                $query = ($pos !== false) ? substr($staticFile, $pos) : '';
+                $_index = substr($staticFile, 1, strlen($staticFile) - 1 - strlen($query));
                 if (isset(self::$manifestContent[$_index])) {
-                    return $prefix . $buildDirectory . '/' . self::$manifestContent[$_index];
+                    return $prefix . $buildDirectory . '/' . self::$manifestContent[$_index] . $query;
                 }
             }
-            return $prefix . $staticFile;
-        } else if (defined("STATIC_RESOURCE_VERSION")) {
-            return $staticFile . '?v=' . STATIC_RESOURCE_VERSION;
         }
+
+        if (defined("STATIC_RESOURCE_VERSION")) {
+            $connector = (strpos($staticFile, '?') === false) ? '?' : '&';
+            if (YII_ENV_DEV) {
+                return $staticFile . $connector . 'v=' . time();
+            }
+            return $staticFile . $connector . 'v=' . STATIC_RESOURCE_VERSION;
+        }
+
         return $staticFile;
     }
 
