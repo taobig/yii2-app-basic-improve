@@ -13,7 +13,7 @@ use app\components\FlashMessage;
 
 \yii\web\YiiAsset::register($this);
 \yii\bootstrap\BootstrapAsset::register($this);
-StaticResource::loadStyle($this, 'css/site.css');
+StaticResource::loadStyle($this, 'styles/site.css');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

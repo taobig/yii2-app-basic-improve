@@ -8,8 +8,8 @@ var gulp = require('gulp'),
     rev = require('gulp-rev'),
     minifycss = require('gulp-minify-css');
 
-var SCRIPT_SRC = 'web/script/**/*.js';
-var STYLE_SRC = 'web/css/**/*.css';
+var SCRIPT_SRC = 'web/scripts/**/*.js';
+var STYLE_SRC = 'web/styles/**/*.css';
 var buildFolder = 'web/build';
 
 /** gulp 3.9
@@ -94,7 +94,7 @@ function minifyCss() {
 function clean() {
     // You can use multiple globbing patterns as you would with `gulp.src`,
     // for example if you are using del 2.0 or above, return its promise
-    return del([ 'assets' ]);
+    return del([ 'web/assets/*' , 'web/build']);
 }
 
 function watch() {
@@ -112,8 +112,10 @@ exports.watch = watch;
 
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
+ * 不能使用并发模式，因为涉及到写rev文件
  */
-var build = gulp.series(clean, gulp.parallel(minifyScript, minifyCss));
+// var build = gulp.series(clean, gulp.parallel(minifyScript, minifyCss));
+var build = gulp.series(clean, gulp.series(minifyScript, minifyCss));
 
 /*
  * You can still use `gulp.task` to expose tasks
@@ -123,5 +125,5 @@ var build = gulp.series(clean, gulp.parallel(minifyScript, minifyCss));
 /*
  * Define default task that can be called by just running `gulp` from cli
  */
-// gulp.task('default', build);
+gulp.task('default', build);
 
