@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+\app\components\StaticResource::loadScript($this, 'script/common.js');
 ?>
 <div class="site-index">
 
