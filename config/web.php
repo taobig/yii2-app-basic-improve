@@ -1,7 +1,7 @@
 <?php
 
-//const STATIC_RESOURCE_HOST = '';// "http://localhost/"
-const STATIC_RESOURCE_VERSION = 2017001;
+const STATIC_RESOURCE_HOST = '';// "http://localhost/"
+const STATIC_RESOURCE_VERSION = 2018001;
 
 require(__DIR__ . '/preload.php');
 
