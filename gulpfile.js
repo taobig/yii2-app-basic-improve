@@ -1,4 +1,4 @@
-// npm install --save-dev   gulp  gulp-changed  gulp-jscs  gulp-uglify  gulp-watch gulp-rev  gulp-minify-css gulp-watch
+// npm install --save-dev   gulp  gulp-changed  gulp-jscs  gulp-uglify  gulp-watch gulp-rev  gulp-minify-css gulp-watch  gulp-eslint
 
 var gulp = require('gulp'),
     changed = require('gulp-changed'),
@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     // watch = require('gulp-watch'),
     rev = require('gulp-rev'),
     minifycss = require('gulp-minify-css');
+var eslint = require('gulp-eslint');
 
 var SCRIPT_SRC = 'web/scripts/**/*.js';
 var STYLE_SRC = 'web/styles/**/*.css';
@@ -56,6 +57,7 @@ var buildFolder = 'web/build';
 
 //gulp 4.0
 var del = require('del');
+
 function minifyScript() {
     return gulp.src(SCRIPT_SRC, {base: 'web'})
     // `changed` 任务需要提前知道目标目录位置才能找出哪些文件是被修改过的
@@ -94,7 +96,7 @@ function minifyCss() {
 function clean() {
     // You can use multiple globbing patterns as you would with `gulp.src`,
     // for example if you are using del 2.0 or above, return its promise
-    return del([ 'web/assets/*' , 'web/build']);
+    return del(['web/assets/*', 'web/build']);
 }
 
 function watch() {
@@ -127,3 +129,8 @@ var build = gulp.series(clean, gulp.series(minifyScript, minifyCss));
  */
 gulp.task('default', build);
 
+gulp.task('lint', function () {
+    return gulp.src(SCRIPT_SRC)
+        .pipe(eslint())
+        .pipe(eslint.format());
+});
