@@ -33,23 +33,9 @@ then run `cd yii2-app-basic-improve; docker-compose up --build -d` to start a do
 The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-toolbox)
 
 ## Database
-```
-CREATE DATABASE `yii2-app-basic-improve` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-
-CREATE TABLE `yii2-app-basic-improve`.`employee` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `account` varchar(20) NOT NULL,
-    `nickname` varchar(20) NOT NULL,
-    `password` varchar(100) NOT NULL,
-    `active` tinyint(4) NOT NULL,
-    `dt_created` datetime NOT NULL,
-    `dt_updated` datetime DEFAULT NULL,
-    PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
--- default password is test
-INSERT INTO `yii2-app-basic-improve`.`employee` (`account`, `nickname`, `password`, `active`, `dt_created`)
-VALUES ('test', 'test', '$2y$10$TFvCpuZIcoxiA4k/z9YUH.aOd.qIgs3Orc1BaFmZH1VGvJWMC5Y..', '1', '2017-01-06 16:01:17');
-```
+1. ```CREATE DATABASE `DATABASE_NAME` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;```
+2. modify `config/db.php`
+3. run `yii migrate` in project root dir to init tables.
 
 # dev
 > gulp watch
