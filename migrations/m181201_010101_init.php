@@ -24,6 +24,7 @@ class m181201_010101_init extends Migration
               `nickname` varchar(20) NOT NULL COMMENT '昵称',
               `password` varchar(100) NOT NULL COMMENT '密码',
               `active` tinyint(4) NOT NULL COMMENT '状态1-有效 0-无效',
+              `version` bigint(20) NOT NULL DEFAULT '0',
               `dt_created` datetime NOT NULL COMMENT '创建时间',
               `dt_updated` datetime DEFAULT NULL COMMENT '最后更新时间',
               PRIMARY KEY (`id`)

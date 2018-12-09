@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+use app\components\exceptions\InnerException;
+use app\components\exceptions\UserException;
+use app\enums\EmployeeActiveEnum;
 use Yii;
 
 /**
@@ -53,5 +56,30 @@ class Employee extends \yii\db\ActiveRecord
             'dt_created' => '创建时间',
             'dt_updated' => '最后更新时间',
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return EmployeeQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new EmployeeQuery(get_called_class());
+    }
+
+    public function delete()
+    {
+        throw new InnerException("User can't be deleted, your should change user.active");
+    }
+
+    public function softDelete()
+    {
+        $this->active = EmployeeActiveEnum::DELETED;
+        return $this->update(true, ['active']);
+    }
+
+    public function optimisticLock()
+    {
+        return 'version';
     }
 }
