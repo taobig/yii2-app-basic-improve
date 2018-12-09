@@ -7,12 +7,11 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Employee */
 
-$this->title = 'Create Employee';
-$this->params['breadcrumbs'][] = ['label' => 'Employees', 'url' => ['index']];
+$this->title = '创建新雇员';
+$this->params['breadcrumbs'][] = ['label' => '雇员管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="employee-create">
-
     <h1><?= Html::encode($this->title) ?></h1>
 
 

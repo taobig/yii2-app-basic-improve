@@ -51,6 +51,7 @@ StaticResource::loadScript($this, 'scripts/common.js');
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 //['label' => 'Contact', 'url' => ['/site/contact']],
+                ['label' => '雇员管理', 'url' => ['/employee/index']],
                 ['label' => Yii::$app->user->identity->username, 'items' => [
                     ['label' => '修改密码', 'url' => Url::to(['site/password'])],
                     ['label' => '退出', 'url' => Url::to(['site/logout']), 'options' => ['class' => 'logout']],

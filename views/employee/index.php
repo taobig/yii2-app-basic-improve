@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Employees';
+$this->title = '雇员管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="employee-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
 
     <p>
-        <?= Html::a('Create Employee', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建新雇员', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -31,7 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'dt_created',
             //'dt_updated',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => yii\grid\ActionColumn::class,
+                'template' => '{view} <span style="margin-left:20px;"></span>{update} ',
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

@@ -8,7 +8,6 @@ use app\models\UserIdentity;
 use Yii;
 use app\models\Employee;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
