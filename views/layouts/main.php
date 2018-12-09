@@ -14,6 +14,7 @@ use app\components\FlashMessage;
 \yii\web\YiiAsset::register($this);
 \yii\bootstrap\BootstrapAsset::register($this);
 StaticResource::loadStyle($this, 'styles/site.css');
+StaticResource::loadScript($this, 'scripts/common.js');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
