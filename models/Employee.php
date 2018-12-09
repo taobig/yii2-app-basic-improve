@@ -7,18 +7,18 @@ use Yii;
 /**
  * This is the model class for table "employee".
  *
- * @property integer $id
- * @property string $account
- * @property string $nickname
- * @property string $password
- * @property integer $active
- * @property string $dt_created
- * @property string $dt_updated
+ * @property int $id
+ * @property string $account 用户名
+ * @property string $nickname 昵称
+ * @property string $password 密码
+ * @property int $active 状态1-有效 0-无效
+ * @property string $dt_created 创建时间
+ * @property string $dt_updated 最后更新时间
  */
 class Employee extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -26,7 +26,7 @@ class Employee extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -40,18 +40,18 @@ class Employee extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'account' => 'Account',
-            'nickname' => 'Nickname',
-            'password' => 'Password',
-            'active' => 'Active',
-            'dt_created' => 'Dt Created',
-            'dt_updated' => 'Dt Updated',
+            'account' => '用户名',
+            'nickname' => '昵称',
+            'password' => '密码',
+            'active' => '状态',
+            'dt_created' => '创建时间',
+            'dt_updated' => '最后更新时间',
         ];
     }
 }
