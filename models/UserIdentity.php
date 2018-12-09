@@ -93,7 +93,7 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
         return password_verify($password, $this->password);
     }
 
-    public function updatePassword(string $oldPassword, string $newPassword)
+    public function updateOwnPassword(string $oldPassword, string $newPassword)
     {
         if (!$this->validatePassword($oldPassword)) {
             throw new UserException('当前密码输入错误');
@@ -105,6 +105,26 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
         ];
         $condition = [
             'id' => $this->id,
+        ];
+        if (1 !== Employee::getDb()->createCommand()->update(Employee::tableName(), $columns, $condition)->execute()) {
+            throw new UserException('修改密码失败，请重试');
+        }
+    }
+
+    /**
+     * @param int $userId
+     * @param string $newPassword
+     * @throws UserException
+     * @throws \yii\db\Exception
+     */
+    public static function updatePassword(int $userId, string $newPassword)
+    {
+        $columns = [
+            'password' => password_hash($newPassword, PASSWORD_DEFAULT),
+            'dt_updated' => date('Y-m-d H:i:s'),
+        ];
+        $condition = [
+            'id' => $userId,
         ];
         if (1 !== Employee::getDb()->createCommand()->update(Employee::tableName(), $columns, $condition)->execute()) {
             throw new UserException('修改密码失败，请重试');

@@ -97,7 +97,7 @@ class SiteController extends BaseHtmlController
                     throw new ParamException('新旧密码都不能为空');
                 }
                 $user = UserIdentity::findIdentity(Yii::$app->user->id);
-                $user->updatePassword($oldPassword, $newPassword);
+                $user->updateOwnPassword($oldPassword, $newPassword);
                 FlashMessage::setSuccess('更改密码成功');
             } catch (UserException $e) {
                 FlashMessage::setDanger($e->getMessage());
