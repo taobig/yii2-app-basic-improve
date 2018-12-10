@@ -8,7 +8,7 @@ use app\enums\EmployeeActiveEnum;
 use Yii;
 
 /**
- * This is the model class for table "employee".
+ * This is the model class for table "{{%employee}}".
  *
  * @property int $id
  * @property string $account 用户名
@@ -25,7 +25,7 @@ class Employee extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'employee';
+        return '{{%employee}}';
     }
 
     /**

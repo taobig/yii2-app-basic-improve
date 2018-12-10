@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Employee;
 use yii\db\Migration;
 
 /**
@@ -12,7 +13,8 @@ class m181201_010101_init extends Migration
      */
     public function safeUp()
     {
-        $tableName = \app\models\Employee::tableName();
+        $tableName = $this->getDb()->getSchema()->getRawTableName(Employee::tableName());
+        echo "tableName:{$tableName}\n";
         $username = "test";
         $password = substr(md5(time()), 0, 8);
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
