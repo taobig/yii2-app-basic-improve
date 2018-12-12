@@ -12,6 +12,10 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules' => [
+        'admin' => [
+            'class' => app\modules\admin\Admin::class,
+            'layout' => 'main',
+        ],
         'v1' => [
             'class' => app\modules\v1\V1::class,
         ],

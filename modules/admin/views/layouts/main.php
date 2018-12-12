@@ -34,34 +34,21 @@ StaticResource::loadScript($this, 'scripts/common.js');
     <?php
     NavBar::begin([
         'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => Yii::$app->homeUrl,//Url::to(['default/index']),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [];
-    if (Yii::$app->user->isGuest) {
-        $menuItems = array_merge($menuItems,
-            [
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ]
-        );
-    } else {
-        $menuItems = array_merge($menuItems,
-            [
-                [
-                    'label' => Yii::$app->user->identity->username,
-                    'items' => [
-                        ['label' => '进入管理后台', 'url' => Url::to(['/admin/default/index'])],
-                        ['label' => '修改密码', 'url' => Url::to(['site/password'])],
-                        ['label' => '退出', 'url' => Url::to(['site/logout']), 'options' => ['class' => 'logout']],
-                    ]
-                ]
-            ]);
-    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
+        'items' => [
+            ['label' => '后台首页', 'url' => ['default/index']],
+            ['label' => '雇员管理', 'url' => ['employee/index']],
+            ['label' => Yii::$app->user->identity->username, 'items' => [
+                ['label' => '修改密码', 'url' => Url::to(['/site/password'])],
+                ['label' => '退出', 'url' => Url::to(['/site/logout']), 'options' => ['class' => 'logout']],
+            ]],
+        ],
     ]);
 
     NavBar::end();
