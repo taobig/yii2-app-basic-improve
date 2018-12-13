@@ -14,12 +14,16 @@ class ErrorHandler extends \yii\web\ErrorHandler
 
     public function renderException($exception)
     {
-        $errorMessage = '系统异常，请稍后重试 ' . date('Y-m-d');
-        if ($exception instanceof UserException) {
-            $errorMessage = $exception->getMessage();
-        } else {//Framework Exception
-            if ($exception instanceof NotFoundHttpException) {
-                $errorMessage = $exception->getMessage();//Page not found.
+        if (YII_ENV_DEV) {
+            $errorMessage = $exception->__toString();
+        } else {
+            $errorMessage = '系统异常，请稍后重试 ' . date('Y-m-d');
+            if ($exception instanceof UserException) {
+                $errorMessage = $exception->getMessage();
+            } else {//Framework Exception
+                if ($exception instanceof NotFoundHttpException) {
+                    $errorMessage = $exception->getMessage();//Page not found.
+                }
             }
         }
 
