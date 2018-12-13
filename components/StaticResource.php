@@ -91,5 +91,13 @@ class StaticResource
         }
         return sprintf('<script src="%s"></script>', self::src($path));
     }
+
+    public static function renderStyle(string $path)
+    {
+        if ($path[0] != '/') {
+            $path = '/' . $path;
+        }
+        return sprintf('<link rel="stylesheet" href="%s" />', self::src($path));
+    }
 }
 
