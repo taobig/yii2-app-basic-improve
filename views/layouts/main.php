@@ -43,7 +43,7 @@ StaticResource::loadScript($this, 'scripts/common.js');
     if (Yii::$app->user->isGuest) {
         $menuItems = array_merge($menuItems,
             [
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Login', 'url' => ['/site/login']],
             ]
         );
     } else {
@@ -52,11 +52,11 @@ StaticResource::loadScript($this, 'scripts/common.js');
                 [
                     'label' => Yii::$app->user->identity->username,
                     'items' => [
-                        ['label' => '进入管理后台', 'url' => Url::to(['/admin/default/index'])],
+                        ['label' => '管理后台', 'url' => ['/admin/default/index']],
                         ['label' => '修改密码', 'url' => Url::to(['site/password'])],
                         ['label' => '退出', 'url' => Url::to(['site/logout']), 'options' => ['class' => 'logout']],
-                    ]
-                ]
+                    ],
+                ],
             ]);
     }
     echo Nav::widget([
