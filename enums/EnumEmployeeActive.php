@@ -3,7 +3,7 @@
 namespace app\enums;
 
 
-class EmployeeActiveEnum extends BaseEnum
+class EnumEmployeeActive extends BaseEnum
 {
     const ACTIVE = 1;
     const DELETED = 0;

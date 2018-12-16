@@ -3,8 +3,7 @@
 namespace app\models;
 
 use app\components\exceptions\InnerException;
-use app\components\exceptions\UserException;
-use app\enums\EmployeeActiveEnum;
+use app\enums\EnumEmployeeActive;
 use Yii;
 
 /**
@@ -74,7 +73,7 @@ class Employee extends \yii\db\ActiveRecord
 
     public function softDelete()
     {
-        $this->active = EmployeeActiveEnum::DELETED;
+        $this->active = EnumEmployeeActive::DELETED;
         return $this->update(true, ['active']);
     }
 

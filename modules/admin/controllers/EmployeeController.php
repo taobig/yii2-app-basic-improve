@@ -3,13 +3,11 @@
 namespace app\modules\admin\controllers;
 
 use app\components\BaseHtmlController;
-use app\enums\EmployeeActiveEnum;
-use app\models\UserIdentity;
+use app\enums\EnumEmployeeActive;
 use Yii;
 use app\models\Employee;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * EmployeeController implements the CRUD actions for Employee model.
@@ -118,7 +116,7 @@ class EmployeeController extends BaseHtmlController
      */
     protected function findModel(int $id)
     {
-        if (($model = Employee::findOne(['id' => $id, 'active' => EmployeeActiveEnum::ACTIVE])) !== null) {
+        if (($model = Employee::findOne(['id' => $id, 'active' => EnumEmployeeActive::ACTIVE])) !== null) {
             return $model;
         }
 
