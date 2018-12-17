@@ -16,7 +16,9 @@
     "camelcase": 2,
     "curly": 2,
     "brace-style": [2, "1tbs"],
-    "quotes": [2, "single"],
+    //single  double  backtick-倒引号
+    //如果违反了规则情况下，这里的数字：0表示不不处理，1表示警告，2表示错误并退出
+//    "quotes": [2, "single"],
     "semi": [2, "always"],
     "space-in-parens": ["error","never"],
 //    "space-in-brackets": [2, "never"],
