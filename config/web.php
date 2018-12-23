@@ -48,12 +48,11 @@ $config = [
             'class' => app\components\handlers\ErrorHandler::class,
         ],
         'urlManager' => [
-//            'class' => 'yii\web\UrlManager',//is default
+//            'class' => yii\web\UrlManager::class,//is default
             'enablePrettyUrl' => true,//default is false
 //            'suffix' => '.html', //This property is used only if [[enablePrettyUrl]] is true.
             'showScriptName' => false, //This property is used only if [[enablePrettyUrl]] is true.
             'rules' => [//the rules for creating and parsing URLs when [[enablePrettyUrl]] is true.
-//                'class' => 'yii\web\UrlRule',//is default
 //                'GET /' => 'site/index',
 //                'GET app/<id:\d+>' => 'app/get-by-id',
             ],
