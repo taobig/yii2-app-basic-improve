@@ -3,9 +3,12 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\grid\DataColumn;
+use app\models\Employee;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $model Employee */
 
 $this->title = '雇员管理';
 $this->params['breadcrumbs'][] = $this->title;
@@ -24,8 +27,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
             'id',
-            'account',
-            'nickname',
+            [
+                'class' => DataColumn::class,
+                'attribute' => 'account',
+                'enableSorting' => false,
+                'format' => 'raw',
+//                'value' => function (Employee $_model, $key, $index, $column) {
+//                    return Html::a($_model->account, ['employee/view', 'id' => $_model->id]);
+//                }
+            ],
+            [
+                'class' => DataColumn::class,
+                'attribute' => 'nickname',
+                'enableSorting' => false,
+            ],
 //            'password',
 //            'active',
             //'dt_created',
