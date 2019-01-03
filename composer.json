@@ -14,14 +14,14 @@
 	"require" : {
 		"php" : ">=7.0.0",
 		"ext-json" : "*",
-		"yiisoft/yii2" : "~2.0.13",
+		"yiisoft/yii2" : "~2.0.14",
 		"yiisoft/yii2-bootstrap" : "~2.0.0"
 	},
 	"require-dev" : {
 		"yiisoft/yii2-gii" : "~2.0.0",
-		"yiisoft/yii2-debug": "^2.0"
+		"yiisoft/yii2-debug" : "~2.0.0"
 	},
-	"config": {
+	"config" : {
 		"process-timeout": 1800,
 		"fxp-asset": {
 			"enabled": false
@@ -37,21 +37,22 @@
 		]
 	},
 	"extra" : {
-		"yii\\composer\\Installer::postCreateProject" : {
-			"setPermission" : [{
-				"runtime" : "0777",
-				"web/assets" : "0777",
-				"yii" : "0755"
-			}
-			],
-			"yii\\composer\\Installer::postInstall": {
-				"generateCookieValidationKey": [
-					"config/web.php"
-				]
-			}
+		"yii\\composer\\Installer::postCreateProject": {
+			"setPermission": [
+				{
+					"runtime": "0777",
+					"web/assets": "0777",
+					"yii": "0755"
+				}
+			]
+		},
+		"yii\\composer\\Installer::postInstall": {
+			"generateCookieValidationKey": [
+				"config/web.php"
+			]
 		}
 	},
-	"repositories": [
+	"repositories" : [
 		{
 			"type": "composer",
 			"url": "https://asset-packagist.org"
