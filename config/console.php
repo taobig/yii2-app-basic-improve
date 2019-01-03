@@ -19,11 +19,11 @@ $config = [
                     'class' => yii\log\FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
-                [
-                    'class' => yii\log\FileTarget::class,
-                    'levels' => ['trace', 'info',],
-                    'logFile' => '@runtime/logs/console_trace.log',
-                ],
+//                [
+//                    'class' => yii\log\FileTarget::class,
+//                    'levels' => ['trace', 'info',],
+//                    'logFile' => '@runtime/logs/console_trace.log',
+//                ],
             ],
         ],
         'db' => require __DIR__ . '/db.php',
