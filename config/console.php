@@ -7,6 +7,10 @@ $config = [
     'name' => CURRENT_PROJECT_NAME,
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
     'controllerNamespace' => 'app\commands',
     'components' => [
         'errorHandler' => [
