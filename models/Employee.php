@@ -3,7 +3,6 @@
 namespace app\models;
 
 use app\components\exceptions\InnerException;
-use app\enums\EnumEmployeeActive;
 use Yii;
 
 /**
@@ -13,7 +12,7 @@ use Yii;
  * @property string $account 用户名
  * @property string $nickname 昵称
  * @property string $password 密码
- * @property int $active 状态1-有效 0-无效
+ * @property int $is_deleted 被删除的时间戳，0表示未删除
  * @property int $version
  * @property string $dt_created 创建时间
  * @property string $dt_updated 最后更新时间
@@ -34,11 +33,12 @@ class Employee extends BaseModel
     public function rules()
     {
         return [
-            [['account', 'password', 'active', 'dt_created'], 'required'],
-            [['active', 'version'], 'integer'],
+            [['account', 'password', 'dt_created'], 'required'],
+            [['is_deleted', 'version'], 'integer'],
             [['dt_created', 'dt_updated'], 'safe'],
             [['account', 'nickname'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 100],
+            [['account', 'is_deleted'], 'unique', 'targetAttribute' => ['account', 'is_deleted']],
         ];
     }
 
@@ -52,7 +52,7 @@ class Employee extends BaseModel
             'account' => '用户名',
             'nickname' => '昵称',
             'password' => '密码',
-            'active' => '状态',
+            'is_deleted' => '被删除的时间戳，0表示未删除',
             'version' => 'Version',
             'dt_created' => '创建时间',
             'dt_updated' => '最后更新时间',
@@ -70,13 +70,13 @@ class Employee extends BaseModel
 
     public function delete()
     {
-        throw new InnerException("User can't be deleted, your should change user.active");
+        throw new InnerException("User can't be deleted, your should change user.is_deleted");
     }
 
     public function softDelete()
     {
-        $this->active = EnumEmployeeActive::DELETED;
-        return $this->update(true, ['active']);
+        $this->is_deleted = time();
+        return $this->update(true, ['is_deleted']);
     }
 
 }

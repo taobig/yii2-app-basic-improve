@@ -100,7 +100,7 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
         }
 
         $columns = [
-            'password' => password_hash($newPassword, PASSWORD_DEFAULT),
+            'password' => self::generateHashPassword($newPassword),
             'dt_updated' => date('Y-m-d H:i:s'),
         ];
         $condition = [
@@ -120,7 +120,7 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
     public static function updatePassword(int $userId, string $newPassword)
     {
         $columns = [
-            'password' => password_hash($newPassword, PASSWORD_DEFAULT),
+            'password' => self::generateHashPassword($newPassword),
             'dt_updated' => date('Y-m-d H:i:s'),
         ];
         $condition = [
@@ -129,5 +129,10 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
         if (1 !== Employee::getDb()->createCommand()->update(Employee::tableName(), $columns, $condition)->execute()) {
             throw new UserException('修改密码失败，请重试');
         }
+    }
+
+    public static function generateHashPassword(string $userInputPassword): string
+    {
+        return password_hash($userInputPassword, PASSWORD_DEFAULT);
     }
 }

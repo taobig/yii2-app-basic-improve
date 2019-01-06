@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use app\enums\EnumEmployeeActive;
-
 /**
  * This is the ActiveQuery class for [[Employee]].
  *
@@ -36,7 +34,7 @@ class EmployeeQuery extends \yii\db\ActiveQuery
 
     public function searchActive(Employee $model)
     {
-        $this->andWhere(['active' => EnumEmployeeActive::ACTIVE]);
+        $this->andWhere(['is_deleted' => 0]);
 
         $this->andFilterWhere(['id' => $model->id]);
         $this->andFilterWhere(['like', 'account', $model->account]);

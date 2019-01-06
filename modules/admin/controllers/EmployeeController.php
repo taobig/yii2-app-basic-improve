@@ -3,7 +3,8 @@
 namespace app\modules\admin\controllers;
 
 use app\components\BaseHtmlController;
-use app\enums\EnumEmployeeActive;
+use app\components\FlashMessage;
+use app\models\UserIdentity;
 use Yii;
 use app\models\Employee;
 use yii\data\ActiveDataProvider;
@@ -56,8 +57,16 @@ class EmployeeController extends BaseHtmlController
     {
         $model = new Employee();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->dt_created = date('Y-m-d H:i:s');
+            $model->password = UserIdentity::generateHashPassword($model->password);
+            if ($model->insert()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }
+
+        if($model->hasErrors()){
+            FlashMessage::setDanger(current($model->getFirstErrors()));
         }
 
         return $this->render('create', [
@@ -80,7 +89,7 @@ class EmployeeController extends BaseHtmlController
 
         if ($model->load(Yii::$app->request->post())) {
             $model->dt_updated = date("Y-m-d H:i:s");
-            if ($model->update(true, ['nickname', 'active', 'dt_updated'])) {
+            if ($model->update(true, ['nickname', 'dt_updated'])) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
             $model->refresh();
@@ -116,7 +125,7 @@ class EmployeeController extends BaseHtmlController
      */
     protected function findModel(int $id)
     {
-        if (($model = Employee::findOne(['id' => $id, 'active' => EnumEmployeeActive::ACTIVE])) !== null) {
+        if (($model = Employee::findOne(['id' => $id, 'is_deleted' => 0])) !== null) {
             return $model;
         }
 

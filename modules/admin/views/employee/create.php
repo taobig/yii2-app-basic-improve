@@ -25,12 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'active')->textInput() ?>
-
-        <?= $form->field($model, 'dt_created')->textInput() ?>
-
-        <?= $form->field($model, 'dt_updated')->textInput() ?>
-
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         </div>

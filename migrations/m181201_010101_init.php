@@ -2,6 +2,7 @@
 
 use app\components\exceptions\InnerException;
 use app\models\Employee;
+use app\models\UserIdentity;
 use yii\db\Migration;
 
 /**
@@ -18,7 +19,7 @@ class m181201_010101_init extends Migration
 //        echo "tableName:{$tableName}\n";
         $username = "test";
         $password = substr(md5(time()), 0, 8);
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = UserIdentity::generateHashPassword($password);
         $datetime = date('Y-m-d H:i:s');
 //        $sql = "
 //            CREATE TABLE `{$tableName}` (
@@ -48,21 +49,19 @@ class m181201_010101_init extends Migration
             'account' => $this->string(20)->notNull()->comment("用户名"),
             'nickname' => $this->string(20)->comment("昵称"),
             'password' => $this->string(100)->notNull()->comment("密码"),
-            'active' => $this->tinyInteger()->notNull()->comment("状态1-有效 0-无效"),
+            'is_deleted' => $this->integer()->notNull()->defaultValue(0)->comment("被删除的时间戳，0表示未删除"),
             'version' => $this->bigInteger()->defaultValue(0),
             'dt_created' => $this->dateTime()->notNull()->comment("创建时间"),
             'dt_updated' => $this->dateTime()->comment("最后更新时间"),
         ], $tableOptions);
-
-//        $this->addPrimaryKey('pk_employee_id', Employee::tableName(), ['id']);
+        $this->createIndex('unique_account', Employee::tableName(), ['account', 'is_deleted'], true);
 
         $employee = new Employee();
         $employee->account = $username;
 //        $employee->nickname = ;
         $employee->password = $hashedPassword;
-        $employee->active = 1;
         $employee->dt_created = $datetime;
-        if(!$employee->insert()){
+        if (!$employee->insert()) {
             var_dump($employee->errors);
             throw new InnerException("insert employee record failed");
         }

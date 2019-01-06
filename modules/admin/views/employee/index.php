@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'enableSorting' => false,
             ],
 //            'password',
-//            'active',
+//            'is_deleted',
             //'dt_created',
             //'dt_updated',
 
