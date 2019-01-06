@@ -14,10 +14,11 @@ use Yii;
  * @property string $nickname 昵称
  * @property string $password 密码
  * @property int $active 状态1-有效 0-无效
+ * @property int $version
  * @property string $dt_created 创建时间
  * @property string $dt_updated 最后更新时间
  */
-class Employee extends \yii\db\ActiveRecord
+class Employee extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -33,8 +34,8 @@ class Employee extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['account', 'nickname', 'password', 'active', 'dt_created'], 'required'],
-            [['active'], 'integer'],
+            [['account', 'password', 'active', 'dt_created'], 'required'],
+            [['active', 'version'], 'integer'],
             [['dt_created', 'dt_updated'], 'safe'],
             [['account', 'nickname'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 100],
@@ -52,6 +53,7 @@ class Employee extends \yii\db\ActiveRecord
             'nickname' => '昵称',
             'password' => '密码',
             'active' => '状态',
+            'version' => 'Version',
             'dt_created' => '创建时间',
             'dt_updated' => '最后更新时间',
         ];
@@ -77,8 +79,4 @@ class Employee extends \yii\db\ActiveRecord
         return $this->update(true, ['active']);
     }
 
-    public function optimisticLock()
-    {
-        return 'version';
-    }
 }
