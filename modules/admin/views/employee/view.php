@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'account',
             'nickname',
 //            'password',
-//            'is_deleted',
+//            'deleted_at',
             'dt_created',
             'dt_updated',
         ],

@@ -34,7 +34,7 @@ class EmployeeQuery extends \yii\db\ActiveQuery
 
     public function searchActive(Employee $model)
     {
-        $this->andWhere(['is_deleted' => 0]);
+        $this->andWhere(['deleted_at' => 0]);
 
         $this->andFilterWhere(['id' => $model->id]);
         $this->andFilterWhere(['like', 'account', $model->account]);

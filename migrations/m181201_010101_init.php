@@ -49,12 +49,12 @@ class m181201_010101_init extends Migration
             'account' => $this->string(20)->notNull()->comment("用户名"),
             'nickname' => $this->string(20)->comment("昵称"),
             'password' => $this->string(100)->notNull()->comment("密码"),
-            'is_deleted' => $this->integer()->notNull()->defaultValue(0)->comment("被删除的时间戳，0表示未删除"),
+            'deleted_at' => $this->integer()->notNull()->defaultValue(0)->comment("被删除的时间戳，0表示未删除"),
             'version' => $this->bigInteger()->defaultValue(0),
             'dt_created' => $this->dateTime()->notNull()->comment("创建时间"),
             'dt_updated' => $this->dateTime()->comment("最后更新时间"),
         ], $tableOptions);
-        $this->createIndex('unique_account', Employee::tableName(), ['account', 'is_deleted'], true);
+        $this->createIndex('unique_account', Employee::tableName(), ['account', 'deleted_at'], true);
 
         $employee = new Employee();
         $employee->account = $username;

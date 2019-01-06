@@ -111,7 +111,7 @@ class EmployeeController extends BaseHtmlController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->softDelete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -125,7 +125,7 @@ class EmployeeController extends BaseHtmlController
      */
     protected function findModel(int $id)
     {
-        if (($model = Employee::findOne(['id' => $id, 'is_deleted' => 0])) !== null) {
+        if (($model = Employee::findOne(['id' => $id, 'deleted_at' => 0])) !== null) {
             return $model;
         }
 
