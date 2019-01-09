@@ -65,7 +65,7 @@ class EmployeeController extends BaseHtmlController
             }
         }
 
-        if($model->hasErrors()){
+        if ($model->hasErrors()) {
             FlashMessage::setDanger(current($model->getFirstErrors()));
         }
 
@@ -111,7 +111,7 @@ class EmployeeController extends BaseHtmlController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id)->softDelete();
 
         return $this->redirect(['index']);
     }
@@ -122,10 +122,11 @@ class EmployeeController extends BaseHtmlController
      * @param integer $id
      * @return Employee the loaded model
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \yii\base\InvalidConfigException
      */
     protected function findModel(int $id)
     {
-        if (($model = Employee::findOne(['id' => $id, 'deleted_at' => 0])) !== null) {
+        if (($model = Employee::findActiveOne(['id' => $id])) !== null) {
             return $model;
         }
 
