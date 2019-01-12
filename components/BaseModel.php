@@ -1,10 +1,10 @@
 <?php
 
-namespace app\models;
+namespace app\components;
 
 use yii\db\ActiveRecord;
 
-class BaseModel extends ActiveRecord
+abstract class BaseModel extends ActiveRecord
 {
 
     /**

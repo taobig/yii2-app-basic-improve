@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 /**
  * This is the model class for table "{{%employee}}".
  *
@@ -14,7 +16,7 @@ namespace app\models;
  * @property string $dt_created 创建时间
  * @property string $dt_updated 最后更新时间
  */
-class Employee extends BaseModel
+class Employee extends \app\components\BaseModel
 {
     /**
      * {@inheritdoc}
@@ -64,5 +66,4 @@ class Employee extends BaseModel
     {
         return new EmployeeQuery(get_called_class());
     }
-
 }

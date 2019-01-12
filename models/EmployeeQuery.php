@@ -7,7 +7,7 @@ namespace app\models;
  *
  * @see Employee
  */
-class EmployeeQuery extends \yii\db\ActiveQuery
+class EmployeeQuery extends \app\components\BaseQuery
 {
     /*public function active()
     {
@@ -32,16 +32,19 @@ class EmployeeQuery extends \yii\db\ActiveQuery
         return parent::one($db);
     }
 
-    public function searchActive(Employee $model)
+    /**
+     * @param Employee $model
+     * @return $this
+     */
+    public function search($model)
     {
-        if ($model->getSoftDeleteAttribute()) {
-            $this->andWhere([$model->getSoftDeleteAttribute() => 0]);
-        }
-
         $this->andFilterWhere(['id' => $model->id]);
         $this->andFilterWhere(['like', 'account', $model->account]);
         $this->andFilterWhere(['like', 'nickname', $model->nickname]);
-
+//        $this->andFilterWhere(['like', 'password', $model->password]);
+        $this->andFilterWhere(['version' => $model->version]);
+        $this->andFilterWhere(['like', 'dt_created', $model->dt_created]);
+        $this->andFilterWhere(['like', 'dt_updated', $model->dt_updated]);
         return $this;
     }
 }
