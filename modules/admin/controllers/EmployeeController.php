@@ -40,6 +40,7 @@ class EmployeeController extends BaseHtmlController
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionView($id)
     {
@@ -52,6 +53,7 @@ class EmployeeController extends BaseHtmlController
      * Creates a new Employee model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
+     * @throws \Throwable
      */
     public function actionCreate()
     {

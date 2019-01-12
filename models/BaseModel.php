@@ -22,7 +22,7 @@ class BaseModel extends ActiveRecord
 
     /**
      * @param $condition
-     * @return array|\yii\db\ActiveRecordInterface|null
+     * @return static|null ActiveRecord instance matching the condition, or `null` if nothing matches.
      * @throws \yii\base\InvalidConfigException
      */
     public static function findActiveOne($condition)
@@ -36,7 +36,7 @@ class BaseModel extends ActiveRecord
 
     /**
      * @param $condition
-     * @return array|ActiveRecord[]
+     * @return static[] an array of ActiveRecord instances, or an empty array if nothing matches.
      * @throws \yii\base\InvalidConfigException
      */
     public static function findActiveAll($condition)
