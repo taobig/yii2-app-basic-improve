@@ -102,13 +102,4 @@ class Generator extends \yii\gii\generators\model\Generator
         return $parentStickyAttributes;
     }
 
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function generate()
-//    {
-//        return parent::generate();
-//    }
-
-
 }
