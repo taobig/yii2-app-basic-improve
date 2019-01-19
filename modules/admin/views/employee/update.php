@@ -21,8 +21,6 @@ $this->params['breadcrumbs'][] = 'Update';
 
         <?= $form->field($model, 'nickname')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'dt_created')->textInput(['readonly' => true]) ?>
-
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         </div>
