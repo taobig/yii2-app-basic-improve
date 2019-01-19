@@ -7,7 +7,8 @@ use app\components\BaseModel;
 use app\components\BaseQuery;
 use ReflectionClass;
 use Yii;
-use yii\helpers\FileHelper;
+use yii\gii\CodeFile;
+use yii\gii\Module;
 
 class Generator extends \yii\gii\generators\model\Generator
 {
@@ -40,32 +41,6 @@ class Generator extends \yii\gii\generators\model\Generator
         return 'This generator generates an ActiveRecord class for the specified database table.';
     }
 
-
-    /**
-     * {@inheritdoc}
-     * @throws \ReflectionException
-     */
-    public function defaultTemplate()
-    {
-        $class = new ReflectionClass(\yii\gii\generators\model\Generator::class);
-
-        $targetDir = $this->createDefaultTemplate($class->getFileName());
-        return $targetDir;
-    }
-
-    //make model-generator compatible to Upstream
-    private function createDefaultTemplate(string $filename)
-    {
-        $sourceDir = dirname($filename) . '/default';
-        $targetDir = Yii::getAlias('@app/runtime/custom-gii/model/default');
-        FileHelper::copyDirectory($sourceDir, $targetDir);
-        $queryFileContent = file_get_contents($targetDir . '/query.php');
-        $pos = strrpos($queryFileContent, '}');
-        $appendContent = file_get_contents(__DIR__ . '/default/query-append.php');
-        file_put_contents($targetDir . '/query.php', substr_replace($queryFileContent, $appendContent, $pos - 1, 0));
-        return $targetDir;
-    }
-
     /**
      * {@inheritdoc}
      * @return string
@@ -76,15 +51,6 @@ class Generator extends \yii\gii\generators\model\Generator
         $class = new ReflectionClass(\yii\gii\generators\model\Generator::class);
 
         return dirname($class->getFileName()) . '/form.php';
-    }
-
-    /**
-     * {@inheritdoc}
-     * @return string
-     */
-    public function getStickyDataFile()
-    {
-        return Yii::$app->getRuntimePath() . '/gii-' . Yii::getVersion() . '/' . str_replace('\\', '-', \yii\gii\generators\model\Generator::class) . '.json';
     }
 
 
@@ -100,6 +66,62 @@ class Generator extends \yii\gii\generators\model\Generator
             }
         }
         return $parentStickyAttributes;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generate()
+    {
+        $reflector = new ReflectionClass(Module::class);
+        $reflectionMethod = $reflector->getMethod("defaultVersion");
+        $reflectionMethod->setAccessible(true);
+        $giiVersion = $reflectionMethod->invoke(new Module([]));
+
+        $files = [];
+        $relations = $this->generateRelations();
+        $db = $this->getDbConnection();
+        foreach ($this->getTableNames() as $tableName) {
+            // model :
+            $modelClassName = $this->generateClassName($tableName);
+            $entityClassName = $modelClassName . 'Entity';
+            $queryClassName = ($this->generateQuery) ? $this->generateQueryClassName($modelClassName) : false;
+            $tableSchema = $db->getTableSchema($tableName);
+            $params = [
+                'tableName' => $tableName,
+                'className' => $modelClassName,
+                'queryClassName' => $queryClassName,
+                'tableSchema' => $tableSchema,
+                'properties' => $this->generateProperties($tableSchema),
+                'labels' => $this->generateLabels($tableSchema),
+                'rules' => $this->generateRules($tableSchema),
+                'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
+            ];
+            $params['entityClassName'] = $entityClassName;
+            $params['giiVersion'] = $giiVersion;
+            $files[] = new CodeFile(
+                Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $entityClassName . '.php',
+                $this->render('entity.php', $params)
+            );
+
+            $files[] = new CodeFile(
+                Yii::getAlias('@' . str_replace('\\', '/', $this->queryNs)) . '/' . $modelClassName . '.php',
+                $this->render('model.php', $params)
+            );
+
+            // query :
+            if ($queryClassName) {
+                $params['className'] = $queryClassName;
+                $params['modelClassName'] = $modelClassName;
+                $files[] = new CodeFile(
+                    Yii::getAlias('@' . str_replace('\\', '/', $this->queryNs)) . '/' . $queryClassName . '.php',
+                    $this->render('query.php', $params)
+                );
+            }
+        }
+
+        return $files;
     }
 
 }
