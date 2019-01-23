@@ -20,11 +20,11 @@ services:
   cron:
     build:
       context: .
-      dockerfile: Dockerfile-cron
+      dockerfile: cron/Dockerfile
       args:
         - env_name=dev
         - env_memory_limit=1024M
-        - env_schedule_file=schedule.cron
+        - env_schedule_file=cron/schedule.cron
     volumes:
       - .:/app
 
