@@ -1,19 +1,30 @@
 version: "3"
 
 services:
-    web:
-#        image: taobig/nginx-php7-fpm:7.0
-#        build: ./_docker
-        build:
-          context: .
-          dockerfile: Dockerfile
-          args:
-            - env_name=dev
-        ports:
-            - "80:80"
-        volumes:
-            - .:/app
-#        dns:
-#            - 223.5.5.5
-#            - 223.6.6.6
+  web:
+    #image: taobig/nginx-php7-fpm:7.0
+    #build: ./_docker
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - env_name=dev
+        - env_memory_limit=1024M
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+  #        dns:
+  #            - 223.5.5.5
+  #            - 223.6.6.6
+  cron:
+    build:
+      context: .
+      dockerfile: Dockerfile-cron
+      args:
+        - env_name=dev
+        - env_memory_limit=1024M
+        - env_schedule_file=schedule.cron
+    volumes:
+      - .:/app
 

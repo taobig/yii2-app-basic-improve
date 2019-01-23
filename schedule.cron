@@ -1,0 +1,6 @@
+
+
+* * * * * flock -xn /tmp/cron-test1.lock -c 'echo `date +\%Y\%m\%d-\%H\%M\%S`' >> /var/log/crontab_test1.log
+* * * * * flock -xn /tmp/cron-test2.lock -c '/usr/local/bin/php  /app/yii hello/index' >> /var/log/crontab_test2.log
+
+

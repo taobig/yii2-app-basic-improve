@@ -25,6 +25,8 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        echo $message . "\n";
+        echo date('Y-m-d H:i:s') . " before sleep\n";
+        sleep(130);
+        echo date('Y-m-d H:i:s') . $message . "\n";
     }
 }
