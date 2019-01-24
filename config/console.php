@@ -23,11 +23,12 @@ $config = [
                     'class' => yii\log\FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
-//                [
-//                    'class' => yii\log\FileTarget::class,
-//                    'levels' => ['trace', 'info',],
-//                    'logFile' => '@runtime/logs/console_trace.log',
-//                ],
+                [
+                    'class' => yii\log\FileTarget::class,
+                    'levels' => ['trace', 'info',],
+                    'logFile' => '@runtime/logs/console_trace.log',
+                    'enabled' => YII_DEBUG ? true : false,
+                ],
             ],
         ],
         'db' => require __DIR__ . '/db.php',
