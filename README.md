@@ -29,7 +29,14 @@ composer global require "fxp/composer-asset-plugin:^1.4.2"
 composer create-project --prefer-dist taobig/yii2-app-basic-improve
 
 ```
-then run `cd yii2-app-basic-improve; docker-compose up --build -d` to start a docker container.   
+then 
+```bash
+cd yii2-app-basic-improve
+docker-compose up --build -d
+If you generated your dev config, you can run
+    docker-compose -f docker-compose.yml -f docker-compose-dev.yml up --build -d
+```
+to start a docker container.   
 The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-toolbox)
 
 ## Database

@@ -1,4 +1,11 @@
-version: "3"
+version: "3.4"
+
+x-env:
+  &env-setting
+  env_name: prod
+  env_memory_limit: 1024M
+  env_db_host: 127.0.0.1
+  env_schedule_file: cron/schedule.cron
 
 services:
   web:
@@ -7,9 +14,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - env_name=dev
-        - env_memory_limit=1024M
+      args: *env-setting
     ports:
       - "80:80"
     volumes:
@@ -21,10 +26,7 @@ services:
     build:
       context: .
       dockerfile: cron/Dockerfile
-      args:
-        - env_name=dev
-        - env_memory_limit=1024M
-        - env_schedule_file=cron/schedule.cron
+      args: *env-setting
     volumes:
       - .:/app
 
