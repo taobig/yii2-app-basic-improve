@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+    web:
+        build:
+          context: .
+          dockerfile: Dockerfile
+          args:
+            - env_name=dev
+            - env_db_host=127.0.0.1
+    cron:
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          - env_name=dev
+          - env_db_host=127.0.0.1
+
