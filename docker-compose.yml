@@ -1,5 +1,6 @@
 version: "3.4"
 
+# docker-compose -f docker-compose.yml -f docker-compose-dev.yml config
 x-env:
   &env-setting
   env_name: prod
