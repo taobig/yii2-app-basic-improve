@@ -16,8 +16,12 @@ services:
       context: .
       dockerfile: Dockerfile
       args: *env-setting
-    ports:
-      - "80:80"
+    #https://docs.docker.com/compose/compose-file/#ports
+#    ports:
+#      - target: 80
+#        published: 80
+#        protocol: tcp
+#        mode: host
     volumes:
       - .:/app
   #        dns:
