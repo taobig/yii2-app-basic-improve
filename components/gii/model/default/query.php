@@ -64,10 +64,16 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->queryBaseClass, '\\
     public function search($model)
     {
 <?php foreach ($properties as $property => $data):
+    if(class_exists('\\' . $generator->ns . '\\' . $modelFullClassName)){
         if($property === ('\\' . $generator->ns . '\\' . $modelFullClassName)::getSoftDeleteAttribute()){
             continue;
         }
-        if($data['type'] === 'string'):?>
+    }else{
+        if($property === ($generator->baseClass)::getSoftDeleteAttribute()){
+            continue;
+        }
+    }
+    if($data['type'] === 'string'):?>
         $this->andFilterWhere(['like', '<?=$property?>', $model-><?=$property?>]);
 <?php else:?>
         $this->andFilterWhere(['<?=$property?>' => $model-><?=$property?>]);
