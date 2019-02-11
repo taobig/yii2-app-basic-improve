@@ -62,5 +62,12 @@ abstract class BaseModel extends ActiveRecord
         }
     }
 
+    function getFirstErrorMessage(): string
+    {
+        if ($this->hasErrors()) {
+            return current($this->getFirstErrors());
+        }
+        return '';
+    }
 
 }
