@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\handlers;
+namespace app\components\yii\handlers;
 
 use app\components\exceptions\BaseException;
 use app\components\exceptions\UserException;

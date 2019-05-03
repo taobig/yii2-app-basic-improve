@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\filters;
+namespace app\components\yii\filters;
 
 use app\components\exceptions\UserException;
 use Yii;

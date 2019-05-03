@@ -2,7 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
-use app\components\BaseHtmlController;
+use app\components\yii\BaseHtmlController;
 use app\components\FlashMessage;
 use app\models\UserIdentity;
 use Yii;

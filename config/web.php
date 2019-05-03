@@ -49,7 +49,7 @@ $config = [
             'enableAutoLogin' => false,
         ],
         'errorHandler' => [
-            'class' => app\components\handlers\ErrorHandler::class,
+            'class' => app\components\yii\handlers\ErrorHandler::class,
         ],
         'urlManager' => [
 //            'class' => yii\web\UrlManager::class,//is default
@@ -94,7 +94,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => yii\gii\Module::class,
         'generators' => [
-            'model' => \app\components\gii\model\Generator::class
+            'model' => \app\components\yii\gii\model\Generator::class
         ],
         'allowedIPs' => ['127.0.0.1', '::1', '192.168.*.*', '*'],
     ];

@@ -1,7 +1,7 @@
 <?php
-namespace app\components;
+namespace app\components\yii;
 
-use app\components\filters\VerbFilter;
+use app\components\yii\filters\VerbFilter;
 use yii\web\JsonParser;
 use yii\web\Response;
 

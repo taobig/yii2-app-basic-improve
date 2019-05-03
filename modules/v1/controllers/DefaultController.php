@@ -2,7 +2,7 @@
 
 namespace app\modules\v1\controllers;
 
-use app\components\BaseJsonController;
+use app\components\yii\BaseJsonController;
 
 class DefaultController extends BaseJsonController
 {

@@ -14,7 +14,7 @@ $config = [
     'controllerNamespace' => 'app\commands',
     'components' => [
         'errorHandler' => [
-            'class' => app\components\handlers\ConsoleErrorHandler::class,
+            'class' => app\components\yii\handlers\ConsoleErrorHandler::class,
             //'errorAction' => 'site/error',
         ],
         'log' => [

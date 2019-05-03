@@ -7,7 +7,7 @@ namespace app\models;
  *
  * @see Employee
  */
-class EmployeeQuery extends \app\components\BaseQuery
+class EmployeeQuery extends \app\components\yii\BaseQuery
 {
     /*public function active()
     {

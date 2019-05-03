@@ -2,7 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
-use app\components\BaseHtmlController;
+use app\components\yii\BaseHtmlController;
 
 class DefaultController extends BaseHtmlController
 {

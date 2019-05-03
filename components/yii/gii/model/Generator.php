@@ -1,10 +1,10 @@
 <?php
 
-namespace app\components\gii\model;
+namespace app\components\yii\gii\model;
 
 
-use app\components\BaseModel;
-use app\components\BaseQuery;
+use app\components\yii\BaseModel;
+use app\components\yii\BaseQuery;
 use ReflectionClass;
 use Yii;
 use yii\gii\CodeFile;

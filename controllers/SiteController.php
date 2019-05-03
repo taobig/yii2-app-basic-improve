@@ -2,17 +2,16 @@
 
 namespace app\controllers;
 
-use app\components\BaseHtmlController;
+use app\components\yii\BaseHtmlController;
 use app\components\exceptions\ParamException;
 use app\components\exceptions\UserException;
-use app\components\filters\AccessControl;
+use app\components\yii\filters\AccessControl;
 use app\components\FlashMessage;
 use app\forms\ContactForm;
 use app\forms\LoginForm;
 use app\models\UserIdentity;
 use Yii;
 use yii\captcha\CaptchaAction;
-use app\components\filters\VerbFilter;
 
 class SiteController extends BaseHtmlController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components;
+namespace app\components\yii;
 
 abstract class BaseQuery extends \yii\db\ActiveQuery
 {
