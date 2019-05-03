@@ -8,14 +8,14 @@ abstract class BaseEnum
 
     abstract public static function labels(): array;
 
-    public static function label($status)
+    public static function label($val)
     {
-        return static::labels()[$status] ?? $status;
+        return static::labels()[$val] ?? $val;
     }
 
-    public static function exists($type): bool
+    public static function exists($va): bool
     {
-        return isset(static::labels()[$type]);
+        return isset(static::labels()[$va]);
     }
 
 }
