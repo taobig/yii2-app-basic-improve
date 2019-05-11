@@ -100,7 +100,6 @@ if (YII_ENV_DEV) {
     ];
 }
 
-echo __DIR__.'/web-'.YII_ENV.'.php';;
 if(file_exists(__DIR__.'/web-'.YII_ENV.'.php')){
     require_once __DIR__.'/web-'.YII_ENV.'.php';
 }
