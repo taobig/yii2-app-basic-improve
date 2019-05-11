@@ -15,6 +15,12 @@ Thumbs.db
 # composer vendor dir
 /vendor
 /node_modules
+/config/web-dev.php
+/config/web-test.php
+/config/web-prod.php
+/config/console-dev.php
+/config/console-test.php
+/config/console-prod.php
 
 # composer itself is not needed
 composer.phar

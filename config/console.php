@@ -43,4 +43,7 @@ $config = [
     */
 ];
 
+if(file_exists(__DIR__.'/console-'.YII_ENV.'.php')){
+    require_once __DIR__.'/console-'.YII_ENV.'.php';
+}
 return $config;
