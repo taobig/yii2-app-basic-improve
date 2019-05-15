@@ -66,7 +66,7 @@ class m181201_010101_init extends Migration
             throw new InnerException("insert employee record failed");
         }
 
-        echo "\n\nuser:{$username}, password:{$password}\n";
+        echo "\n\nusername:{$username}, password:{$password}\n";
     }
 
     /**
