@@ -7,7 +7,7 @@ services:
         dockerfile: Dockerfile
         args:
           - env_name=dev
-          - env_db_host=127.0.0.1
+#          - env_db_host=127.0.0.1
       ports:
         - target: 80
           published: 80
@@ -19,5 +19,5 @@ services:
         dockerfile: Dockerfile
         args:
           - env_name=dev
-          - env_db_host=127.0.0.1
+#          - env_db_host=127.0.0.1
 

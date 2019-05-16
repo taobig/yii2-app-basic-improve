@@ -2,7 +2,7 @@ FROM taobig/nginx-php7-fpm:7.0
 
 ARG env_name
 ARG env_memory_limit
-ARG env_db_host
+#ARG env_db_host
 
 
 
@@ -10,7 +10,7 @@ ARG env_db_host
 # docker-compose up --build -d
 RUN echo "env.name=${env_name}" >> /usr/local/php/etc/php.ini
 RUN sed -i "s/^memory_limit = 128M/memory_limit = ${env_memory_limit}/" /usr/local/php/etc/php.ini
-RUN echo "env.db_host=${env_db_host}" >> /usr/local/php/etc/php.ini
+#RUN echo "env.db_host=${env_db_host}" >> /usr/local/php/etc/php.ini
 
 
 #RUN echo "env.name=dev" >> /usr/local/php/etc/php.ini && \

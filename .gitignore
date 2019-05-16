@@ -22,6 +22,9 @@ Thumbs.db
 /config/console-test.php
 /config/console-prod.php
 
+/docker-compose-dev.yml
+
+
 # composer itself is not needed
 composer.phar
 
