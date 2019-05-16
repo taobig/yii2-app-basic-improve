@@ -1,8 +1,8 @@
 <?php
 
 use app\components\exceptions\InnerException;
+use app\components\yii\identity\EmployeeIdentity;
 use app\models\Employee;
-use app\models\UserIdentity;
 use yii\db\Migration;
 
 /**
@@ -19,7 +19,7 @@ class m181201_010101_init extends Migration
 //        echo "tableName:{$tableName}\n";
         $username = "test";
         $password = substr(md5(time()), 0, 8);
-        $hashedPassword = UserIdentity::generateHashPassword($password);
+        $hashedPassword = EmployeeIdentity::generateHashPassword($password);
         $datetime = date('Y-m-d H:i:s');
 //        $sql = "
 //            CREATE TABLE `{$tableName}` (

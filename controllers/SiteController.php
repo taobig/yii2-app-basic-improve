@@ -7,9 +7,9 @@ use app\components\exceptions\ParamException;
 use app\components\exceptions\UserException;
 use app\components\yii\filters\AccessControl;
 use app\components\FlashMessage;
+use app\components\yii\identity\EmployeeIdentity;
 use app\forms\ContactForm;
 use app\forms\LoginForm;
-use app\models\UserIdentity;
 use Yii;
 use yii\captcha\CaptchaAction;
 
@@ -95,7 +95,7 @@ class SiteController extends BaseHtmlController
                 if (empty($oldPassword) || empty($newPassword)) {
                     throw new ParamException('新旧密码都不能为空');
                 }
-                $user = UserIdentity::findIdentity(Yii::$app->user->id);
+                $user = EmployeeIdentity::findIdentity(Yii::$app->user->id);
                 $user->updateOwnPassword($oldPassword, $newPassword);
                 FlashMessage::setSuccess('更改密码成功');
             } catch (UserException $e) {

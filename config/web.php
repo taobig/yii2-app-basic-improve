@@ -45,7 +45,7 @@ $config = [
             'class' => yii\caching\FileCache::class,
         ],
         'user' => [
-            'identityClass' => app\models\UserIdentity::class,
+            'identityClass' => app\components\yii\identity\EmployeeIdentity::class,
             'enableAutoLogin' => false,
         ],
         'errorHandler' => [

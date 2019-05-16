@@ -4,7 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\components\yii\BaseHtmlController;
 use app\components\FlashMessage;
-use app\models\UserIdentity;
+use app\components\yii\identity\EmployeeIdentity;
 use Yii;
 use app\models\Employee;
 use yii\data\ActiveDataProvider;
@@ -61,7 +61,7 @@ class EmployeeController extends BaseHtmlController
 
         if ($model->load(Yii::$app->request->post())) {
             $model->dt_created = date('Y-m-d H:i:s');
-            $model->password = UserIdentity::generateHashPassword($model->password);
+            $model->password = EmployeeIdentity::generateHashPassword($model->password);
             if ($model->insert()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

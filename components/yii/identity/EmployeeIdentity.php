@@ -1,18 +1,18 @@
 <?php
 
-namespace app\models;
+namespace app\components\yii\identity;
 
 use app\components\exceptions\UserException;
+use app\models\Employee;
 use yii\base\Exception;
 
-class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+class EmployeeIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
     public $id;
     public $username;
     public $password;
     public $authKey;
     public $accessToken;
-
 
     /**
      * @inheritdoc
@@ -36,7 +36,7 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new Exception("unsupport !");
+        throw new Exception("unsupported !");
     }
 
     /**
@@ -93,6 +93,7 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
         return password_verify($password, $this->password);
     }
 
+
     public function updateOwnPassword(string $oldPassword, string $newPassword)
     {
         if (!$this->validatePassword($oldPassword)) {
@@ -135,4 +136,5 @@ class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInte
     {
         return password_hash($userInputPassword, PASSWORD_DEFAULT);
     }
+
 }
