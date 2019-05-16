@@ -10,9 +10,9 @@ class EmployeeIdentity extends \yii\base\BaseObject implements \yii\web\Identity
 {
     public $id;
     public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
+    protected $password;//不要让外部访问
+    protected $authKey;
+    protected $accessToken;
 
     /**
      * @inheritdoc
@@ -20,13 +20,12 @@ class EmployeeIdentity extends \yii\base\BaseObject implements \yii\web\Identity
     public static function findIdentity($id)
     {
         $employee = Employee::findOne(['id' => $id]);
-
         if ($employee) {
-            $user = new static();
-            $user->id = $employee->id;
-            $user->username = $employee->account;
-            $user->password = $employee->password;
-            return $user;
+            $identity = new static();
+            $identity->id = $employee->id;
+            $identity->username = $employee->account;
+            $identity->password = $employee->password;
+            return $identity;
         }
         return null;
     }
@@ -49,11 +48,11 @@ class EmployeeIdentity extends \yii\base\BaseObject implements \yii\web\Identity
     {
         $employee = Employee::findOne(['account' => $username]);
         if ($employee) {
-            $user = new static();
-            $user->id = $employee->id;
-            $user->username = $employee->account;
-            $user->password = $employee->password;
-            return $user;
+            $identity = new static();
+            $identity->id = $employee->id;
+            $identity->username = $employee->account;
+            $identity->password = $employee->password;
+            return $identity;
         }
         return null;
     }
