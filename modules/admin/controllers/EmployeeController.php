@@ -27,6 +27,11 @@ class EmployeeController extends BaseHtmlController
 
         $dataProvider = new ActiveDataProvider([
             'query' => Employee::find()->searchActive($model),
+            'sort' => [
+                'defaultOrder' => [
+                    'dt_created' => SORT_DESC,
+                ],
+            ]
         ]);
 
         return $this->render('index', [
