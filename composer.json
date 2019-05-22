@@ -15,7 +15,8 @@
 		"php" : ">=7.0.0",
 		"ext-json" : "*",
 		"yiisoft/yii2" : "~2.0.14",
-		"yiisoft/yii2-bootstrap" : "~2.0.0"
+		"yiisoft/yii2-bootstrap" : "~2.0.0",
+		"edwinhaq/yii2-simple-loading": "^1.0"
 	},
 	"require-dev" : {
 		"yiisoft/yii2-gii" : "~2.0.0",
