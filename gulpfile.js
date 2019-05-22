@@ -2,7 +2,7 @@
 
 var gulp = require('gulp'),
     changed = require('gulp-changed'),
-    jscs = require('gulp-jscs'),
+    // jscs = require('gulp-jscs'),
     uglify = require('gulp-uglify'),
     // watch = require('gulp-watch'),
     rev = require('gulp-rev'),
