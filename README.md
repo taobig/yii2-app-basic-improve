@@ -45,7 +45,8 @@ The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-t
 3. run `yii migrate` in project root dir to init tables.
 
 # dev
-> gulp watch
+> npm i gulp-cli -g  
+> gulp watch  
 
 # pre-deploy
 1. build static resources
