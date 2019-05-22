@@ -6,7 +6,7 @@ $params = require(__DIR__ . '/params.php');
 class QResponse
 {
 
-    public static function successJsonResponse(array $data, string $message = ''): array
+    public static function successJsonResponse($data, string $message = ''): array
     {
         $result = [
             'status' => 0,

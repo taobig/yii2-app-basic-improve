@@ -1,4 +1,5 @@
 <?php
+
 namespace app\components\yii;
 
 use yii\web\Controller;
@@ -8,11 +9,11 @@ abstract class BaseController extends Controller
 
 
     /**
-     * @param array $data
+     * @param array|object|null $data
      * @param string $message
      * @return array
      */
-    public function successJsonResponse(array $data, string $message = '')
+    public function successJsonResponse($data = null, string $message = '')
     {
         return JsonResponse::successJsonResponse($data, $message);
     }
