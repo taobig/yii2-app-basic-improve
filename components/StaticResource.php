@@ -18,7 +18,7 @@ class StaticResource
      */
     private static function src(string $staticFile): string
     {
-        if (defined("STATIC_RESOURCE_HOST")) {
+        if (!YII_ENV_DEV && defined("STATIC_RESOURCE_HOST")) {
             $buildDirectory = 'build';
             $prefix = empty(STATIC_RESOURCE_HOST) ? '' : rtrim(STATIC_RESOURCE_HOST, '/') . '/';
 
