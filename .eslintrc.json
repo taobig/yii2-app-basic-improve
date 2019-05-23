@@ -9,7 +9,9 @@
     }
   },
   "globals": {
-    "angular": false
+    "angular": false,
+    "jQuery": true,
+    "$": true
   },
   "rules": {
     "no-console":0,
