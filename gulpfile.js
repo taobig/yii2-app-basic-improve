@@ -1,17 +1,17 @@
 // npm install --save-dev   gulp  gulp-changed  gulp-jscs  gulp-uglify  gulp-watch gulp-rev  gulp-minify-css gulp-watch  gulp-eslint
 
-var gulp = require('gulp'),
+let gulp = require('gulp'),
     changed = require('gulp-changed'),
     // jscs = require('gulp-jscs'),
     uglify = require('gulp-uglify'),
     // watch = require('gulp-watch'),
     rev = require('gulp-rev'),
     minifycss = require('gulp-minify-css');
-var eslint = require('gulp-eslint');
+let eslint = require('gulp-eslint');
 
-var SCRIPT_SRC = 'web/scripts/**/*.js';
-var STYLE_SRC = 'web/styles/**/*.css';
-var buildFolder = 'web/build';
+let SCRIPT_SRC = 'web/scripts/**/*.js';
+let STYLE_SRC = 'web/styles/**/*.css';
+let buildFolder = 'web/build';
 
 /** gulp 3.9
  gulp.task('minifyscript', function() {
@@ -53,10 +53,7 @@ var buildFolder = 'web/build';
     gulp.start('minifyscript', 'minifycss');
 });
  */
-
-
-//gulp 4.0
-var del = require('del');
+let del = require('del');
 
 function minifyScript() {
     return gulp.src(SCRIPT_SRC, {base: 'web'})
@@ -117,7 +114,7 @@ exports.watch = watch;
  * 不能使用并发模式，因为涉及到写rev文件
  */
 // var build = gulp.series(clean, gulp.parallel(minifyScript, minifyCss));
-var build = gulp.series(clean, gulp.series(minifyScript, minifyCss));
+let build = gulp.series(clean, gulp.series(minifyScript, minifyCss));
 
 /*
  * You can still use `gulp.task` to expose tasks
