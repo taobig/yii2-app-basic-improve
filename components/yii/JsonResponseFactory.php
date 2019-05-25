@@ -14,9 +14,9 @@ class JsonResponseFactory
         return self::buildData($message, self::CODE_NO_ERROR, $data);
     }
 
-    public static function buildErrorResponse(string $message, int $status = self::CODE_COMMON_ERROR): array
+    public static function buildErrorResponse(string $message, $data = null, int $status = self::CODE_COMMON_ERROR): array
     {
-        return self::buildData($message, $status);
+        return self::buildData($message, $status, $data);
     }
 
     private static function buildData(string $message, int $status, $data = null): array

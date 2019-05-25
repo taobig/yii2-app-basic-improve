@@ -47,7 +47,7 @@ class ErrorHandler extends \yii\web\ErrorHandler
             }
 
             if ($exception instanceof BaseException) {
-                $response->data = JsonResponseFactory::buildErrorResponse($errorMessage, $exception->getCode());
+                $response->data = JsonResponseFactory::buildErrorResponse($errorMessage, null, $exception->getCode());
             } else {
                 $response->data = JsonResponseFactory::buildErrorResponse($errorMessage);
             }
