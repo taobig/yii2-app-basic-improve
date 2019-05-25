@@ -4,6 +4,7 @@ namespace app\components\yii\handlers;
 
 use app\components\exceptions\BaseException;
 use app\components\exceptions\UserException;
+use app\components\yii\JsonResponseFactory;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -39,12 +40,17 @@ class ErrorHandler extends \yii\web\ErrorHandler
             $response = new Response();
         }
 
-        if (\QResponse::isJsonResponse() || $response->format == Response::FORMAT_JSON) {
+        if (JsonResponseFactory::isJsonResponse() || $response->format == Response::FORMAT_JSON) {
             $response->setStatusCode(200);//保证返回格式为json时，HTTP状态码总是200
             if ($response->format != Response::FORMAT_JSON) {
                 $response->format = Response::FORMAT_JSON;
             }
-            $response->data = \QResponse::errorJsonResponse($errorMessage);
+
+            if ($exception instanceof BaseException) {
+                $response->data = JsonResponseFactory::buildErrorResponse($errorMessage, $exception->getCode());
+            } else {
+                $response->data = JsonResponseFactory::buildErrorResponse($errorMessage);
+            }
         } else {
             $response->setStatusCodeByException($exception);
             $response->data = Yii::$app->view->render('@app/views/layouts/error', ['name' => '出错了……', 'message' => $errorMessage]);

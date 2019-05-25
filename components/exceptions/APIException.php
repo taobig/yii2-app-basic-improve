@@ -3,6 +3,8 @@
 namespace app\components\exceptions;
 
 
+use app\components\yii\JsonResponseFactory;
+
 class APIException extends UserException
 {
 
@@ -40,7 +42,7 @@ class APIException extends UserException
      * @param int $code
      * @param \Exception $previous
      */
-    public function __construct(string $message, string $url, $response, $request, int $code = 0, \Exception $previous = null)
+    public function __construct(string $message, string $url, $response, $request, int $code = JsonResponseFactory::CODE_API_INVOKE_ERROR, \Exception $previous = null)
     {
         $this->_url = $url;
         $this->_response = $response;

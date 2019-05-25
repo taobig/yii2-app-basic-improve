@@ -2,8 +2,16 @@
 
 namespace app\components\exceptions;
 
+use app\components\yii\JsonResponseFactory;
+use Throwable;
+
 abstract class BaseException extends \Exception
 {
+
+    public function __construct($message = "", $code = JsonResponseFactory::CODE_COMMON_ERROR, Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
 
     public function __destruct()
     {

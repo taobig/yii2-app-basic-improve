@@ -5,24 +5,33 @@ namespace app\components\yii;
 class JsonResponseFactory
 {
 
-    /**
-     * @param mixed $data
-     * @param string $message
-     * @return array
-     */
-    public static function buildSuccessJsonResponse($data, string $message = '')
+    const CODE_NO_ERROR = 0;
+    const CODE_COMMON_ERROR = 1;
+    const CODE_API_INVOKE_ERROR = 11;
+
+    public static function buildSuccessResponse($data, string $message = ''): array
     {
-        return \QResponse::successJsonResponse($data, $message);
+        return self::buildData($message, self::CODE_NO_ERROR, $data);
     }
 
-    /**
-     * @param string $message
-     * @return array
-     */
-    public static function buildErrorJsonResponse(string $message)
+    public static function buildErrorResponse(string $message, int $status = self::CODE_COMMON_ERROR): array
     {
-        return \QResponse::errorJsonResponse($message);
+        return self::buildData($message, $status);
     }
 
+    private static function buildData(string $message, int $status, $data = null): array
+    {
+        $result = [
+            'status' => $status,
+            'message' => $message,
+            'data' => $data,
+        ];
+        return $result;
+    }
+
+    public static function isJsonResponse(): bool
+    {
+        return (!empty($_SERVER['HTTP_X_RESPONSE_TYPE'])) && $_SERVER['HTTP_X_RESPONSE_TYPE'] == 'json';
+    }
 
 }

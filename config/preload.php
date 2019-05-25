@@ -3,37 +3,6 @@
 const CURRENT_PROJECT_NAME = 'project_name';
 $params = require(__DIR__ . '/params.php');
 
-class QResponse
-{
-
-    public static function successJsonResponse($data, string $message = ''): array
-    {
-        $result = [
-            'status' => 0,
-            'data' => $data,
-        ];
-        if ($message) {
-            $result['message'] = $message;
-        }
-        return $result;
-    }
-
-    public static function errorJsonResponse(string $message, int $status = 1): array
-    {
-        $result = [
-            'status' => $status,
-            'message' => $message,
-        ];
-        return $result;
-    }
-
-    public static function isJsonResponse(): bool
-    {
-        return (!empty($_SERVER['HTTP_X_RESPONSE_TYPE'])) && $_SERVER['HTTP_X_RESPONSE_TYPE'] == 'json';
-    }
-
-}
-
 class QUniqueRequest
 {
     private static $_unique_request_id = null;

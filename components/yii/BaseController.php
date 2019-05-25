@@ -19,7 +19,7 @@ abstract class BaseController extends Controller
         if (!is_object($data) && !is_array($data) && !is_null($data)) {
             throw new \TypeError('type error');
         }
-        return JsonResponseFactory::buildSuccessJsonResponse($data, $message);
+        return JsonResponseFactory::buildSuccessResponse($data, $message);
     }
 
     /**
@@ -29,6 +29,6 @@ abstract class BaseController extends Controller
     public function errorJsonResponse(string $message)
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        return JsonResponseFactory::buildErrorJsonResponse($message);
+        return JsonResponseFactory::buildErrorResponse($message);
     }
 }
