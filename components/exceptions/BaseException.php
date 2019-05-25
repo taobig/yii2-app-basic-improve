@@ -8,7 +8,7 @@ use Throwable;
 abstract class BaseException extends \Exception
 {
 
-    public function __construct($message = "", $code = JsonResponseFactory::CODE_COMMON_ERROR, Throwable $previous = null)
+    public function __construct(string $message = "", int $code = JsonResponseFactory::CODE_COMMON_ERROR, Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
