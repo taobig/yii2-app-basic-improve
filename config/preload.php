@@ -18,10 +18,10 @@ class QResponse
         return $result;
     }
 
-    public static function errorJsonResponse(string $message): array
+    public static function errorJsonResponse(string $message, int $status = 1): array
     {
         $result = [
-            'status' => 1,
+            'status' => $status,
             'message' => $message,
         ];
         return $result;
