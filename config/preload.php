@@ -49,7 +49,7 @@ class QCustomLogger
             'http_referer' => $_SERVER['HTTP_REFERER'] ?? ''
         ];
 
-        file_put_contents(self::_getLogFile(), implode(";", $log) . "\n", FILE_APPEND);
+        file_put_contents(self::getLogFile(), implode(";", $log) . "\n", FILE_APPEND);
     }
 
     private static function _getLogDirectory(): string
@@ -63,13 +63,18 @@ class QCustomLogger
         return $directoryPath;
     }
 
-    private static function _getLogFile(): string
+    public static function getLogFile(): string
     {
         $directoryPath = self::_getLogDirectory();
         if (php_sapi_name() === 'cli') {//root
             return $directoryPath . '/console_error.log';
         }
         return $directoryPath . '/error.log';
+    }
+
+    public static function getAccessLogFile(): string
+    {
+        return self::_getLogDirectory() . '/' . 'access-' . date('Ymd') . '.log';
     }
 
     public static function access(string $message, bool $isBegin = false)
@@ -85,9 +90,7 @@ class QCustomLogger
             $log_body = QUniqueRequest::getId() . "\n {$dt}>>> " . $message . PHP_EOL . PHP_EOL;
         }
 
-        $access_log_filename = 'access-' . date('Ymd') . '.log';
-        $directoryPath = self::_getLogDirectory();
-        file_put_contents($directoryPath . '/' . $access_log_filename, $log_body, FILE_APPEND);
+        file_put_contents(self::getAccessLogFile(), $log_body, FILE_APPEND);
     }
 
     public static function debug($message, string $filename = 'debug.log')
