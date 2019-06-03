@@ -1,4 +1,4 @@
-FROM taobig/nginx-php72
+FROM taobig/nginx-php73
 # Ubuntu only
 
 ARG env_name
