@@ -11,7 +11,8 @@
   "globals": {
     "angular": false,
     "jQuery": true,
-    "$": true
+    "$": true,
+    "console": true
   },
   "rules": {
     "no-console":0,

@@ -2,7 +2,12 @@
 
 /* @var $this yii\web\View */
 
+use edwinhaq\simpleloading\SimpleLoading;
+
 $this->title = 'My Yii Application';
+\app\components\StaticResource::loadScript($this, 'scripts/site/index.js');
+
+SimpleLoading::widget();
 ?>
 <div class="site-index">
 
@@ -36,6 +41,7 @@ $this->title = 'My Yii Application';
                     fugiat nulla pariatur.</p>
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <p><button class="btn btn-default" id="loading_btn">Loading...</button></p>
             </div>
             <div class="col-lg-4">
                 <h2>Heading</h2>
