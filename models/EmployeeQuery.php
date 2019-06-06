@@ -2,12 +2,14 @@
 
 namespace app\models;
 
+use taobig\yii\BaseQuery;
+
 /**
  * This is the ActiveQuery class for [[Employee]].
  *
  * @see Employee
  */
-class EmployeeQuery extends \app\components\yii\BaseQuery
+class EmployeeQuery extends BaseQuery
 {
     /*public function active()
     {

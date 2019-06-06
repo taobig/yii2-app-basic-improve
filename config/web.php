@@ -94,7 +94,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => yii\gii\Module::class,
         'generators' => [
-            'model' => \app\components\yii\gii\model\Generator::class
+            'model' => taobig\yii\gii\model\Generator::class,
         ],
         'allowedIPs' => ['127.0.0.1', '::1', '192.168.*.*', '*'],
     ];
