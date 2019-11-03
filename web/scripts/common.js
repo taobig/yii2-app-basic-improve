@@ -3,8 +3,10 @@ $(function () {
     // var a = 1111;
     // console.log(a);
 
-    if(false) {
-        var formData = new FormData();
+    if (false) {
+        let $form = $(this).closest("form");
+        let formData = new FormData();
+        let file_index = 1;
         $form.find("input[type=file]").each(function (i, element) {
             if ($(element)[0].files.length > 0) {
                 formData.append("file_" + file_index, $(element)[0].files[0]);
