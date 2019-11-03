@@ -6,7 +6,7 @@ let gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     // watch = require('gulp-watch'),
     rev = require('gulp-rev'),
-    minifycss = require('gulp-minify-css');
+    cleanCSS = require('gulp-clean-css');
 let eslint = require('gulp-eslint');
 
 let SCRIPT_SRC = 'web/scripts/**/*.js';
