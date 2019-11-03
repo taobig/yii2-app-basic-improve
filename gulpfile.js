@@ -1,13 +1,14 @@
-// npm install --save-dev   gulp  gulp-changed  gulp-jscs  gulp-uglify  gulp-watch gulp-rev  gulp-minify-css gulp-watch  gulp-eslint
+// npm install --save-dev   gulp  gulp-changed  gulp-uglify gulp-rev gulp-eslint  gulp-clean-css
 
 let gulp = require('gulp'),
     changed = require('gulp-changed'),
     // jscs = require('gulp-jscs'),
-    uglify = require('gulp-uglify'),
+    // uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify-es').default,
     // watch = require('gulp-watch'),
     rev = require('gulp-rev'),
-    cleanCSS = require('gulp-clean-css');
-let eslint = require('gulp-eslint');
+    cleanCSS = require('gulp-clean-css'),
+    eslint = require('gulp-eslint');
 
 let SCRIPT_SRC = 'web/scripts/**/*.js';
 let STYLE_SRC = 'web/styles/**/*.css';
