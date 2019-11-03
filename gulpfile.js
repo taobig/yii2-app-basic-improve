@@ -1,4 +1,6 @@
 // npm install --save-dev   gulp  gulp-changed  gulp-uglify gulp-rev gulp-eslint  gulp-clean-css
+// https://www.npmjs.com/package/gulp-babel
+//  npm install --save-dev gulp-babel @babel/core @babel/preset-env
 
 let gulp = require('gulp'),
     changed = require('gulp-changed'),
@@ -8,7 +10,8 @@ let gulp = require('gulp'),
     // watch = require('gulp-watch'),
     rev = require('gulp-rev'),
     cleanCSS = require('gulp-clean-css'),
-    eslint = require('gulp-eslint');
+    eslint = require('gulp-eslint'),
+    babel = require('gulp-babel');
 
 let SCRIPT_SRC = 'web/scripts/**/*.js';
 let STYLE_SRC = 'web/styles/**/*.css';
@@ -62,6 +65,9 @@ function minifyScript() {
     //.pipe(changed(buildFolder))// 只有被更改过的文件才会通过这里
     //.pipe(watch(SRC))//只重新编译被更改过的文件
     //.pipe(jscs())
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(uglify())
         //.pipe(gulp.dest(buildFolder))//// copy original src to build dir
         .pipe(rev())
