@@ -75,7 +75,7 @@ function minifyScript() {
 
 function minifyCss() {
     return gulp.src(STYLE_SRC, {base: 'web'})
-        .pipe(minifycss())   //执行压缩
+        .pipe(cleanCSS())   //执行压缩
         //.pipe(gulp.dest(buildFolder))//// copy original src to build dir
         .pipe(rev())
         .pipe(gulp.dest(buildFolder))// write rev'd src to build dir
