@@ -73,7 +73,7 @@ class ErrorHandler extends \yii\web\ErrorHandler
 //        } elseif ($exception instanceof \ErrorException) {
 //            $category .= ':' . $exception->getSeverity();
 //        }
-        \QCustomLogger::logException($exception);
+        \Yii::error($exception);
     }
 
 }

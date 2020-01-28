@@ -101,7 +101,7 @@ class SiteController extends BaseHtmlController
             } catch (UserException $e) {
                 FlashMessage::setDanger($e->getMessage());
             } catch (\Throwable $e) {
-                \QCustomLogger::logException($e);
+                \Yii::error($e);
                 FlashMessage::setDanger('系统异常，请重试');
             }
         }

@@ -18,7 +18,7 @@ class ConsoleErrorHandler extends \yii\base\ErrorHandler
         if ($exception instanceof BaseException) {//will log by BaseException::__destruct()
             return;
         }
-        \QCustomLogger::logException($exception);
+        \Yii::error($exception);
     }
 
 }
