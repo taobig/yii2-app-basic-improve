@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "892e064502cd9c3c65e3ddd7aae2ec9d",
+    "content-hash": "23a94a4b2305d75478b26efd7ba2064c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -278,16 +278,16 @@
         },
         {
             "name": "taobig/yii-helper",
-            "version": "v0.1.2",
+            "version": "v0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/taobig/yii-helper.git",
-                "reference": "51a02b1ba463b0d211b27ffba774ba47af6a7c92"
+                "reference": "88fbe99c07245f65e355fbf34c66d1fc10165ada"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/taobig/yii-helper/zipball/51a02b1ba463b0d211b27ffba774ba47af6a7c92",
-                "reference": "51a02b1ba463b0d211b27ffba774ba47af6a7c92",
+                "url": "https://api.github.com/repos/taobig/yii-helper/zipball/88fbe99c07245f65e355fbf34c66d1fc10165ada",
+                "reference": "88fbe99c07245f65e355fbf34c66d1fc10165ada",
                 "shasum": ""
             },
             "require": {
@@ -311,7 +311,7 @@
             ],
             "description": "yii components",
             "homepage": "https://github.com/taobig/yii-helper",
-            "time": "2020-01-27T12:27:30+00:00"
+            "time": "2020-01-28T03:53:44+00:00"
         },
         {
             "name": "yiisoft/yii2",
