@@ -1,7 +1,6 @@
 <?php
 
-const STATIC_RESOURCE_HOST = '';// "http://localhost/"
-const STATIC_RESOURCE_VERSION = 2018001;
+use yii\helpers\ArrayHelper;
 
 require(__DIR__ . '/preload.php');
 
@@ -65,21 +64,33 @@ $config = [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => yii\log\FileTarget::class,
-                    'levels' => ['error', 'warning'],
+                    'class' => \taobig\yii\log\FileTarget::class,
+                    'logVars' => [],
+                    'levels' => ['error', 'warning'],//'error', 'warning', 'info', 'trace', 'profile'
+                    'logFile' => '@runtime/logs/app_web_u' . posix_getuid() . '.log',
                 ],
                 [
-                    'class' => yii\log\FileTarget::class,
+                    'class' => \taobig\yii\log\FileTarget::class,
+                    'categories' => ['access'],
+                    'logVars' => [],
+                    'levels' => ['info'],//'error', 'warning', 'info', 'trace', 'profile'
+                    'logFile' => '@runtime/logs/access_web_u' . posix_getuid() . '.log',
+                ],
+                [
+                    'class' => \taobig\yii\log\FileTarget::class,
                     'logVars' => ['_GET', '_POST', '_FILES', '_SESSION'],
                     'levels' => ['info',],
-                    'logFile' => '@runtime/logs/info.log',
+                    'logFile' => '@runtime/logs/info_web_u' . posix_getuid() . '.log',
                     'enabled' => YII_DEBUG ? true : false,
                 ],
             ],
         ],
         'db' => require __DIR__ . '/db.php',
     ],
-    'params' => $params,
+    'params' => ArrayHelper::merge(
+        require(__DIR__ . '/params.php'),
+        []
+    ),
 ];
 
 if (YII_ENV_DEV) {
@@ -100,7 +111,4 @@ if (YII_ENV_DEV) {
     ];
 }
 
-if(file_exists(__DIR__.'/web-'.YII_ENV.'.php')){
-    require_once __DIR__.'/web-'.YII_ENV.'.php';
-}
 return $config;
