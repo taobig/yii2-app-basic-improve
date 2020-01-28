@@ -2,29 +2,28 @@
 
 namespace app\components\exceptions;
 
-use app\components\yii\JsonResponseFactory;
 use Throwable;
 
 abstract class BaseException extends \Exception
 {
 
-    public function __construct(string $message = "", int $code = JsonResponseFactory::CODE_COMMON_ERROR, Throwable $previous = null)
+    protected $exposeErrorMessage = false;
+    protected $extraData = null;
+
+    public function getExposeErrorMessage(): bool
     {
-        parent::__construct($message, $code, $previous);
+        return $this->exposeErrorMessage;
     }
 
-    public function __destruct()
+    public function getExtraData()
     {
-        $message = $this->getMessage();
-        if ($this instanceof APIException) {
-            $message .= ' ' . $this->getUrl() . ' ' . json_encode($this->getRequest());
-            $response = $this->getResponse();
-            if (!is_string($response)) {
-                $message .= ' ' . json_encode($response);
-            } else {
-                $message .= ' ' . $response;
-            }
-        }
-        \QCustomLogger::logException($this, $message);
+        return $this->extraData;
+    }
+
+    public function __construct(string $message = "", int $code = null, Throwable $previous = null, $extraData = null)
+    {
+        $this->extraData = $extraData;
+
+        parent::__construct($message, $code, $previous);
     }
 }
