@@ -3,7 +3,6 @@
 namespace app\components\yii\handlers;
 
 use app\components\exceptions\BaseException;
-use app\components\exceptions\UserException;
 use app\components\yii\JsonResponseFactory;
 use Yii;
 use yii\web\NotFoundHttpException;
@@ -19,9 +18,11 @@ class ErrorHandler extends \yii\web\ErrorHandler
             $errorMessage = $exception->__toString();
         } else {
             $errorMessage = '系统异常，请稍后重试 ' . date('Y-m-d');
-            if ($exception instanceof UserException) {
-                $errorMessage = $exception->getMessage();
-            } else {//Framework Exception
+            if ($exception instanceof BaseException) {
+                if ($exception->getExposeErrorMessage()) {
+                    $errorMessage = $exception->getMessage();
+                }
+            } else {//other exceptions(include framework exception)
                 if ($exception instanceof NotFoundHttpException) {
                     $errorMessage = $exception->getMessage();//Page not found.
                 }
@@ -61,9 +62,6 @@ class ErrorHandler extends \yii\web\ErrorHandler
 
     public function logException($exception)
     {
-        if ($exception instanceof BaseException) {//will log by BaseException::__destruct()
-            return;
-        }
         if ($exception instanceof NotFoundHttpException) {//don't log
             return;
         }
