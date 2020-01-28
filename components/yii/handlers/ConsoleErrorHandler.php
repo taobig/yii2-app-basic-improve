@@ -15,9 +15,6 @@ class ConsoleErrorHandler extends \yii\base\ErrorHandler
 
     public function logException($exception)
     {
-        if ($exception instanceof BaseException) {//will log by BaseException::__destruct()
-            return;
-        }
         \Yii::error($exception);
     }
 
