@@ -73,7 +73,7 @@ class EmployeeController extends BaseHtmlController
         }
 
         if ($model->hasErrors()) {
-            FlashMessage::setDanger(current($model->getFirstErrors()));
+            FlashMessage::setDanger($model->getFirstErrorMessage());
         }
 
         return $this->render('create', [
