@@ -71,7 +71,6 @@ class EmployeeController extends BaseHtmlController
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
-
         if ($model->hasErrors()) {
             FlashMessage::setDanger($model->getFirstErrorMessage());
         }
@@ -100,6 +99,9 @@ class EmployeeController extends BaseHtmlController
                 return $this->redirect(['view', 'id' => $model->id]);
             }
             $model->refresh();
+        }
+        if ($model->hasErrors()) {
+            FlashMessage::setDanger($model->getFirstErrorMessage());
         }
 
         return $this->render('update', [
