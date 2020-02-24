@@ -28,6 +28,9 @@ You can then install this project template using the following command:
 composer global require "fxp/composer-asset-plugin:^1.4.2"
 composer create-project --prefer-dist taobig/yii2-app-basic-improve
 
+# install project from master branch
+composer create-project taobig/yii2-app-basic-improve data-query dev-master
+
 ```
 then 
 ```bash
