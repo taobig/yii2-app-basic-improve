@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bb60f4c21d49b8b7692909d1c096909",
+    "content-hash": "6089df6aa393d838f93fa90780720e8c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -32,7 +32,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -53,7 +53,7 @@
             "version": "3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
             },
             "dist": {
@@ -253,16 +253,16 @@
         },
         {
             "name": "taobig/yii-helper",
-            "version": "v0.2.0",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/taobig/yii-helper.git",
-                "reference": "683052568f472aa4c997332a808356469fa154b5"
+                "reference": "a1c6f0ff3a0e2cc28fe1b5b4ee74ee0e77f2fafb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/taobig/yii-helper/zipball/683052568f472aa4c997332a808356469fa154b5",
-                "reference": "683052568f472aa4c997332a808356469fa154b5",
+                "url": "https://api.github.com/repos/taobig/yii-helper/zipball/a1c6f0ff3a0e2cc28fe1b5b4ee74ee0e77f2fafb",
+                "reference": "a1c6f0ff3a0e2cc28fe1b5b4ee74ee0e77f2fafb",
                 "shasum": ""
             },
             "require": {
@@ -286,7 +286,7 @@
             ],
             "description": "yii components",
             "homepage": "https://github.com/taobig/yii-helper",
-            "time": "2020-02-15T02:35:36+00:00"
+            "time": "2020-03-16T12:44:36+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -508,24 +508,25 @@
         },
         {
             "name": "yiisoft/yii2-redis",
-            "version": "2.0.11",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-redis.git",
-                "reference": "92f2926296996c78f2441fc81e357a6e3b349e5e"
+                "reference": "28d0034f8b5a0734863affa4eaf9a76ec9b8bb85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/92f2926296996c78f2441fc81e357a6e3b349e5e",
-                "reference": "92f2926296996c78f2441fc81e357a6e3b349e5e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/28d0034f8b5a0734863affa4eaf9a76ec9b8bb85",
+                "reference": "28d0034f8b5a0734863affa4eaf9a76ec9b8bb85",
                 "shasum": ""
             },
             "require": {
-                "yiisoft/yii2": "~2.0.14"
+                "ext-openssl": "*",
+                "yiisoft/yii2": "~2.0.16"
             },
             "require-dev": {
                 "phpunit/phpunit": "<7",
-                "yiisoft/yii2-dev": "~2.0.14"
+                "yiisoft/yii2-dev": "~2.0.16"
             },
             "type": "yii2-extension",
             "extra": {
@@ -556,7 +557,7 @@
                 "session",
                 "yii2"
             ],
-            "time": "2019-11-05T14:58:47+00:00"
+            "time": "2020-03-13T07:25:25+00:00"
         }
     ],
     "packages-dev": [
