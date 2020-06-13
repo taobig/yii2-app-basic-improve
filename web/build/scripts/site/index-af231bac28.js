@@ -1,0 +1,1 @@
+"use strict";$((function(){$("#loading_btn").on("click",(function(i){SimpleLoading.start("gears"),setTimeout((function(){SimpleLoading.stop()}),2e3)}))}));
