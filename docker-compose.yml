@@ -6,7 +6,6 @@ x-env:
   env_name: prod
   env_memory_limit: 1024M
 #  env_db_host: 127.0.0.1
-  env_schedule_file: cron/schedule.cron
 
 services:
   web:
@@ -27,11 +26,5 @@ services:
   #        dns:
   #            - 223.5.5.5
   #            - 223.6.6.6
-  cron:
-    build:
-      context: .
-      dockerfile: cron/Dockerfile
-      args: *env-setting
-    volumes:
-      - .:/app
+
 
