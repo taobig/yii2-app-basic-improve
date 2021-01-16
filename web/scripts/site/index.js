@@ -1,4 +1,4 @@
-/*global console,SimpleLoading*/
+/*global SimpleLoading*/
 $(function () {
 
     $("#loading_btn").on("click", function (e) {
