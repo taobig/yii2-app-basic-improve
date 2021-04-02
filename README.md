@@ -20,19 +20,15 @@ features to your application.
 **Install via Composer**  
 If you do not have Composer, you may install it refer to [getcomposer.org](https://getcomposer.org/download/).
 
-In order to use Docker-Toolbox, you must download this project to `$HOME`($HOME on *nix or %USERPROFILE% on Windows).
-
 You can then install this project template using the following command:
 ```
-  
-composer global require "fxp/composer-asset-plugin:^1.4.2"
 composer create-project --prefer-dist taobig/yii2-app-basic-improve
 
 # install project from master branch
 composer create-project taobig/yii2-app-basic-improve your_project_dir_name dev-master
 
 ```
-then 
+then
 ```bash
 cd yii2-app-basic-improve
 docker-compose up --build -d
@@ -40,7 +36,7 @@ If you generated your dev config, you can run
     docker-compose -f docker-compose.yml -f docker-compose-dev.yml up --build -d
 ```
 to start a docker container.   
-The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-toolbox)
+The homepage is on http://localhost:8001
 
 ## Database
 1. ```CREATE DATABASE `DATABASE_NAME` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;```
@@ -49,7 +45,7 @@ The homepage is on http://localhost (Docker)  or http://192.168.99.100 (Docker-t
 
 # dev
 > npm i gulp-cli -g  
-> gulp watch  
+> gulp watch
 
 # pre-deploy
 1. build static resources
