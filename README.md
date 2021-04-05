@@ -30,10 +30,9 @@ composer create-project taobig/yii2-app-basic-improve your_project_dir_name dev-
 ```
 then
 ```bash
-cd yii2-app-basic-improve
-docker-compose up --build -d
-If you generated your dev config, you can run
-    docker-compose -f docker-compose.yml -f docker-compose-dev.yml up --build -d
+cd yii2-app-basic-improve;  
+docker-compose -f docker-compose.yml -f docker-compose-dev.yml up --build -d;  
+composer install;  
 ```
 to start a docker container.   
 The homepage is on http://localhost:8001
