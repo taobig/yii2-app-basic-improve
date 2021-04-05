@@ -18,7 +18,7 @@ services:
     #https://docs.docker.com/compose/compose-file/#ports
 #    ports:
 #      - target: 80
-#        published: 80
+#        published: 8001
 #        protocol: tcp
 #        mode: host
     volumes:
