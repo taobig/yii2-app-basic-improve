@@ -105,7 +105,13 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => yii\gii\Module::class,
         'generators' => [
-            'model' => taobig\yii\gii\model\Generator::class,
+            //'model' => taobig\yii\gii\model\Generator::class,
+            'model' => [
+                'class' => \yii\gii\generators\model\Generator::class,
+                'baseClass' => \taobig\yii\model\BaseModel::class,
+                'generateLabelsFromComments' => true,
+                //'enableI18N' => true,
+            ]
         ],
         'allowedIPs' => ['127.0.0.1', '::1', '192.168.*.*', '*'],
     ];
