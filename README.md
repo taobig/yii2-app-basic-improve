@@ -1,3 +1,5 @@
+# This project has been abandoned.
+
 Yii 2 Basic Project Template
 ============================
 
